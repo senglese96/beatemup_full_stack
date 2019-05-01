@@ -13,3 +13,7 @@
     text-decoration: none;
     font-size: 14px
 }
+
+.nav-bar a:hover{
+    cursor: pointer;
+}

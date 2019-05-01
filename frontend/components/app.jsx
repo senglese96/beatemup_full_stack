@@ -5,9 +5,11 @@ import NavBarContainer from './nav_bar_container'
 import MainPageContainer from './main_page/main_page_container'
 import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container'
+import Modal from './modal';
 
 const App = () => (
     <> 
+        <Modal />
         <header>
             <NavBarContainer />
         </header>

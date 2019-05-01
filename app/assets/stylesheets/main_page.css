@@ -33,9 +33,6 @@
     justify-content: center;
     align-items: center;
     transition-duration: 0.7s;
-}
-
-.greeting-button a{
     color: white;
     text-decoration: none;
     font-size: 18px;
@@ -43,6 +40,7 @@
     color: white;
     font-weight: 600;
 }
+
 
 .greeting-button:hover{
     cursor: pointer;

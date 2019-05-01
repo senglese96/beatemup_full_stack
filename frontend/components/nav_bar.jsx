@@ -13,7 +13,7 @@ class NavBar extends React.Component{
                     <Link to='/' className="home-button">BeatEmUp</Link>
                     <span>
                         <Link to='/login'>Log In</Link>
-                        <Link to='/signup'>Sign Up</Link>
+                        <a onClick={this.props.openModal}>Sign Up</a>
                     </span>
                 </div>
             )

@@ -4,6 +4,11 @@ import { Link, Redirect, Route} from 'react-router-dom'
 class MainPage extends React.Component{
     constructor(props){
         super(props)
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick(e){
+        this.props.history.push('/signup')
     }
 
     render(){
@@ -12,8 +17,8 @@ class MainPage extends React.Component{
                 <div className="main-greeting">
                     <h2>Battlefield is calling</h2>
                     <p>Find tournaments for fighting games in your area</p>
-                    <div className="greeting-button">
-                        <Link to='/signup'>Get Brawling</Link>
+                    <div className="greeting-button" onClick={this.handleClick}>
+                        Get Brawling
                     </div>
                 </div>
             )
