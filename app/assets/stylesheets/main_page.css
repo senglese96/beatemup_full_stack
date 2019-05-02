@@ -59,7 +59,7 @@
 }
 
 #five{
-    background-image: url('./soul_calibur_stage.jpg')
+    background-image: url('./images/soul_calibur_stage.jpg')
 }
 
 #four{
@@ -75,7 +75,7 @@
 }
 
 #one{
-    background-image: url('./Battlefield.png');
+    background-image: url('./images/Battlefield.png');
 }
 
 @keyframes fadein {
