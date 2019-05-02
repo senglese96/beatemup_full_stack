@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
     helper_method :current_user, :logged_in?
 
+
     def current_user 
         @current_user ||= User.find_by_session_token(session[:session_token])
     end
@@ -17,5 +18,9 @@ class ApplicationController < ActionController::Base
     def logout
         current_user.reset_session_token!
         session[:session_token] = nil
+    end
+
+    def underscore_params!(permited_params)
+        permited_params.to_h.deep_transform_keys!(&:underscore)
     end
 end

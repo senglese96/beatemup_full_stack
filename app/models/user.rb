@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint           not null, primary key
+#  username        :string           not null
+#  password_digest :string
+#  session_token   :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ApplicationRecord
     validates :username, :session_token, :password_digest, presence: true
     validates :username, uniqueness: true
@@ -34,4 +46,10 @@ class User < ApplicationRecord
         user = User.find_by(username: username)
         user && user.is_password?(password) ? user : nil
     end
+
+    has_many(
+        :events_hosted,
+        foreign_key: :host_id,
+        class_name: 'Event'
+    )
 end
