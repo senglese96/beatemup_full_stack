@@ -46,11 +46,23 @@ class SessionForm extends React.Component {
             otherType = 'login'
         }
         // TODO refactor into two components. the forms are too different.
+        let errors
+        if(this.props.errors.length !== 0){
+            errors = <ul className='session-errors'>
+                {this.props.errors.map(error => {
+                    return <li>{error}</li>
+                })}
+            </ul>;
+        } else{
+            errors = null
+        }
+
         return (
+            <>
+            {errors}
             <div className='form-container'>
                 <h3>{formText}</h3>
                 <Link to={'/' + otherType}>{otherText}</Link>
-                <p>{this.props.errors}</p>
                 <form className='session-form' onSubmit={this.handleSubmit}>
                     <label>Username:
                     <br/>
@@ -63,6 +75,7 @@ class SessionForm extends React.Component {
                     <input type="submit" value={formText} />
                 </form>
             </div>
+            </>
         )
     }
 }

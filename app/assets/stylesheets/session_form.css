@@ -58,3 +58,17 @@
 .session-form input[type="submit"]:hover{
     background-color: red;
 }
+
+.session-errors{
+    height: 100px;
+    width: 600px;
+    background-color: rgba(255, 208, 215, 0.877);
+    margin: 0 auto;
+    margin-top: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    padding: 25px;
+    text-align: center;
+    color: #b80046;
+}

@@ -2,9 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 470px;
+    height: 550px;
     justify-content: center;
-    background-color: blue
+    overflow: hidden;
 }
 
 .main-greeting h2{
@@ -44,4 +44,55 @@
 .greeting-button:hover{
     cursor: pointer;
     background-color: red;
+}
+
+/* slideshow */
+
+.slide-fade{
+    height: 560px;
+    width: 100%;
+    z-index: -2;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#five{
+    background-image: url(./soul_calibur_stage.jpg)
+}
+
+#four{
+    background-image: url(./melee_final_d.jpg)
+}
+
+#three{
+    background-image: url(./SFV_Ring_of_Power.png)
+}
+
+#two{
+    background-image: url(./mishima_dojo.jpg);
+}
+
+#one{
+    background-image: url(./Battlefield.png);
+}
+
+
+@keyframes slide{
+    0%{
+        transform: translate3d(200px, 0, 0);
+    }
+    100%{
+        transform: translate3d(-200px, 0, 0);
+    }
+}
+    
+.banana{
+    position: absolute;
+    overflow: hidden;
+    top: -70px;
+    z-index: -1;
+    height: 630px;
+    width: 150%;
+    animation: slide 15s;
+    animation-iteration-count: infinite;
 }

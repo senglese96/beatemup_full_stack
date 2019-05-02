@@ -10,11 +10,15 @@ function Modal({ modal, closeModal }) {
     return (
         <div className="modal-background" onClick={closeModal}>
             <div className="modal-child" onClick={e => e.stopPropagation()}>
-                <h1>Sign Up</h1>
-                <p>Already a member? <Link to='/login' onClick={closeModal}>Log In</Link></p>
+                
+                <span>
+                    <i onClick={closeModal} className="fa fa-times" id='modal-x'></i>
+                    <h1>Sign Up</h1>
+                    <p>Already a member? <Link to='/login' onClick={closeModal}>Log In</Link></p>
+                </span>
                 <div>
-                    <Link to="/signup" onClick={closeModal}><div>
-                       <i className="far fa-envelope"></i>Sign Up With Email</div>
+                    <Link to="/signup" onClick={closeModal}><div className="modal-link">
+                       <i className="far fa-envelope"></i>   Sign Up With Email</div>
                     </Link>
                 </div>
             </div>
