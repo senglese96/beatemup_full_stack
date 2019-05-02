@@ -59,23 +59,23 @@
 }
 
 #five{
-    background-image: url('./images/soul_calibur_stage.jpg')
+    background-image: url('/soul_calibur_stage.jpg')
 }
 
 #four{
-    background-image: url('./melee_final_d.jpg')
+    background-image: url('/melee_final_d.jpg')
 }
 
 #three{
-    background-image: url('./SFV_Ring_of_Power.png')
+    background-image: url('/SFV_Ring_of_Power.png')
 }
 
 #two{
-    background-image: url('./mishima_dojo.jpg');
+    background-image: url('/mishima_dojo.jpg');
 }
 
 #one{
-    background-image: url('./images/Battlefield.png');
+    background-image: url('/Battlefield.png');
 }
 
 @keyframes fadein {
