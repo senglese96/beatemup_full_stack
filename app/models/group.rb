@@ -20,4 +20,16 @@ class Group < ApplicationRecord
         foreign_key: :group_id,
         class_name: 'Event'
     )
+
+    has_many(
+        :memberships,
+        foreign_key: :group_id,
+        class_name: 'Membership'
+    )
+
+    has_many(
+        :members,
+        through: :memberships,
+        source: :member
+    )
 end

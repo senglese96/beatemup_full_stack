@@ -52,4 +52,16 @@ class User < ApplicationRecord
         foreign_key: :host_id,
         class_name: 'Event'
     )
+
+    has_many(
+        :memberships,
+        foreign_key: :member_id,
+        class_name: 'Membership'
+    )
+
+    has_many(
+        :groups,
+        through: :memberships,
+        source: :group
+    )
 end
