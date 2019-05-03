@@ -1,1 +1,1 @@
-json.extract! user, :name, :category, :description, :location
+json.extract! group, :name, :category, :description, :location, :id

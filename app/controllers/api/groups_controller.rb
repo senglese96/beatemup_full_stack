@@ -10,8 +10,9 @@ class Api::GroupsController < ApplicationController
 
     def show
         @group = Group.find_by(id: params[:id])
+        @members = @group.members
         if @group
-            render "api/group/show"
+            render "api/groups/show"
         else
             render json: 'Group Not Found', status: 404
         end

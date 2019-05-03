@@ -64,4 +64,16 @@ class User < ApplicationRecord
         through: :memberships,
         source: :group
     )
+
+    has_many(
+        :attendances,
+        foreign_key: :attendee_id,
+        class_name:  'Attendance'
+    )
+
+    has_many(
+        :events_attended,
+        through: :attendances,
+        source: :event
+    )
 end

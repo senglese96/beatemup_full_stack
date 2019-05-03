@@ -32,4 +32,6 @@ class Group < ApplicationRecord
         through: :memberships,
         source: :member
     )
+
+    has_one_attached :photo
 end

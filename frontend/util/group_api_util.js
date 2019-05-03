@@ -35,3 +35,10 @@ export const deleteGroup = (groupId) => {
         url: 'api/groups/' + groupId
     })
 }
+
+export const createMembership = (groupId) => {
+    return $.ajax({
+        method: 'POST',
+        url: 'api/groups/' + groupId + '/memberships'
+    })
+}

@@ -22,7 +22,9 @@ class NavBar extends React.Component{
             return(
                 <div>
                     <Link to='/'>BeatEmUp</Link>
-                    <div>
+                    <div className='nav-buttons'>
+                        <Link to='/newgroup'>Start a new group</Link>
+                        <Link to='/'>Explore</Link>
                         <button onClick={this.props.logout}>Logout</button>
                     </div>
                 </div>

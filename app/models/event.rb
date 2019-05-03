@@ -29,4 +29,18 @@ class Event < ApplicationRecord
         class_name: 'Group',
         optional: true
     )
+
+    has_many(
+        :attendances,
+        foreign_key: :event_id,
+        class_name: 'Attendance'
+    )
+
+    has_many(
+        :attendees,
+        through: :attendances,
+        source: :attendee
+    )
+
+    has_one_attached :photo
 end

@@ -11,7 +11,7 @@ const eventsReducer = (state = {}, action) => {
         case RECEIVE_GROUPS:
             return action.groups
         case RECEIVE_GROUP:
-            let newState = merge({}, state, { [action.group.id]: action.group })
+            let newState = merge({}, state, { [action.group.group.id]: action.group.group})
             return newState
         case REMOVE_GROUP:
             let someState = merge({}, state)

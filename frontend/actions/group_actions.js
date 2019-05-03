@@ -1,4 +1,4 @@
-import * as APIUtil from '../util/event_api_util';
+import * as APIUtil from '../util/group_api_util';
 
 export const RECEIVE_GROUPS = 'RECEIVE_GROUPS';
 export const RECEIVE_GROUP = 'RECEIVE_GROUP';
