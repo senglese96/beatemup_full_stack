@@ -12,6 +12,7 @@
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     font-weight: 600;
+    text-shadow: 1px 1px 2px  #aaaaaa;
 }
 
 .main-greeting p{
@@ -20,6 +21,7 @@
     color: white;
     font-weight: 600;
     padding: 15px;
+    text-shadow: 1px 1px 2px #aaaaaa;
 }
 
 .greeting-button{

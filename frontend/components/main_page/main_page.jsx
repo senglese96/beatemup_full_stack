@@ -31,8 +31,8 @@ class MainPage extends React.Component{
     slideshowAnimation(){
         let that = this
         setInterval(() => {
-            let tempt = this.animations.shift()
-            this.animations.push(tempt);
+            let banana = this.animations.shift()
+            this.animations.push(banana);
             that.setState({backgroundImg: this.animations[0]})
         }, 15000)
     }

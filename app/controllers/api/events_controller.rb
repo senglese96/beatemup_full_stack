@@ -3,7 +3,7 @@ class Api::EventsController < ApplicationController
     def create
         @event = Event.new(event_params)
         if @event.save
-            render 'api/events/event'
+            render 'api/events/show'
         else
             render json: @event.errors.full_messages
         end
@@ -19,21 +19,28 @@ class Api::EventsController < ApplicationController
     end
 
     def index
-        if params.include?(:constraints)
-            @events = Event.where(params[:constraints])
-            render 'api/events/index'
-        else
-            @events = Event.all
-            render 'api/events/index'
-        end
+        @events = Event.all
+        render 'api/events/index'
     end
 
     def update
-        
+        @event = Event.find_by(id: params[:id])
+        if @event.update(event_params)
+            render 'api/events/show'
+        else
+            render json: 'Event Not Found', status: 404
+        end
     end
 
     def destroy
+         @event = Event.find_by(id: params[:id])
+        if @event
+            @event.destroy
 
+            render 'api/events/show'
+        else
+            render json: 'Event Not Found', status: 404
+        end
     end
 
     private
