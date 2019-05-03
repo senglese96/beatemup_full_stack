@@ -22,4 +22,11 @@ class Event < ApplicationRecord
         foreign_key: :host_id,
         class_name: 'User'
     )
+
+    belongs_to(
+        :group,
+        foreign_key: :group_id,
+        class_name: 'Group',
+        optional: true
+    )
 end
