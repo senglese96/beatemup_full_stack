@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: groups
+#
+#  id          :bigint           not null, primary key
+#  category    :string           not null
+#  description :string
+#  name        :string           not null
+#  location    :string           not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 class Group < ApplicationRecord
     validates :category, :location, presence: true
     validates :name,  presence: true, uniqueness: true

@@ -1,0 +1,1 @@
+json.extract! user, :name, :category, :description, :location
