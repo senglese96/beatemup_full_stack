@@ -5,6 +5,7 @@
     height: 400px;
     justify-content: center;
     overflow: hidden;
+    margin-bottom: 70px;
 }
 
 .main-greeting h2{

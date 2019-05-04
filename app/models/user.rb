@@ -76,4 +76,6 @@ class User < ApplicationRecord
         through: :attendances,
         source: :event
     )
+
+    has_one_attached :avatar
 end

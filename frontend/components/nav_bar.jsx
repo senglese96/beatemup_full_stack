@@ -20,13 +20,13 @@ class NavBar extends React.Component{
         }
         else{
             return(
-                <div>
+                <div className='logged-in-bar'>
                     <Link to='/'>BeatEmUp</Link>
-                    <div className='nav-buttons'>
-                        <Link to='/newgroup'>Start a new group</Link>
+                    <span className='nav-buttons'>
+                        <Link to='/newgroup' className='new-group-button'>Start a new group</Link>
                         <Link to='/'>Explore</Link>
                         <button onClick={this.props.logout}>Logout</button>
-                    </div>
+                    </span>
                 </div>
             )
         }

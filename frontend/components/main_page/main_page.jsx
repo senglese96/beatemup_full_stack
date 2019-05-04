@@ -6,7 +6,9 @@ class MainPage extends React.Component{
         super(props)
         this.handleClick = this.handleClick.bind(this)
         this.state = {
-            backgroundImg: <div className='slide-fade' id='one' style={{ width: '100%' }}></div>        
+            backgroundImg: <div className='slide-fade' id='one' style={{ width: '100%' }}></div>,  
+            eIndex: 0,
+            gIndex: 0     
         }
         this.slideshowAnimation = this.slideshowAnimation.bind(this)
         this.animations = [
@@ -26,6 +28,8 @@ class MainPage extends React.Component{
         if (!this.props.loggedIn) {
             this.slideshowAnimation();
         }
+        this.props.fetchEvents();
+        this.props.fetchGroups();
     }
 
     slideshowAnimation(){
@@ -39,7 +43,11 @@ class MainPage extends React.Component{
 
     render(){
         if(!this.props.loggedIn){
+            let currGroups = this.props.groups.slice(this.state.gIndex, this.state.gIndex + 3);
+            let currEvents = this.props.events.slice(this.state.eIndex, this.state.eIndex + 3);
+            debugger
             return(
+                <>
                 <div className="main-greeting">
                     <div  className='banana'>
                         {this.state.backgroundImg}
@@ -50,11 +58,23 @@ class MainPage extends React.Component{
                         Get Brawling
                     </div>
                 </div>
+                <div className="unlogged-main-events-index">
+                    {currEvents.map(event => {
+                        return(<span className='unlogged-event-index-item'>
+                            <h3>{event.date}</h3>
+                            <div>{event.title}</div>
+                            <div>{event.location}</div>
+                        </span>
+                        )
+                    })}
+                </div>
+                </>
+
             )
         }else{
             return(
                 <div>
-
+                    
                 </div>
             )
         }

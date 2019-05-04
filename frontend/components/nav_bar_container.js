@@ -4,7 +4,8 @@ import { signup, logout } from '../actions/session_actions'
 import { openModal } from '../actions/modal_actions'
 
 const mapStateToProps = state => ({
-    loggedIn: !!(state.session.id)
+    loggedIn: !!(state.session.id),
+    currentUser: state.entities.users[state.session.id]
 })
 
 const mapDispatchToProps = dispatch => ({
