@@ -31,6 +31,13 @@ host_id: e.id,
 details: 'Ceo tournament',
 date: Date.new(2019, 6, 14))
 
+evo = Event.create!(title: 'EVO', 
+event_address: 'Las Vegas', 
+category: 'tournament',
+host_id: m.id,
+details: 'Evo tournament',
+date: Date.new(2019, 6, 30))
+
 Membership.destroy_all
 Membership.create!(member_id: d.id, group_id: hk.id)
 Membership.create!(member_id: m.id, group_id: hk.id)

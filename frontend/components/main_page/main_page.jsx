@@ -45,7 +45,6 @@ class MainPage extends React.Component{
         if(!this.props.loggedIn){
             let currGroups = this.props.groups.slice(this.state.gIndex, this.state.gIndex + 3);
             let currEvents = this.props.events.slice(this.state.eIndex, this.state.eIndex + 3);
-            debugger
             return(
                 <>
                 <div className="main-greeting">
@@ -58,13 +57,15 @@ class MainPage extends React.Component{
                         Get Brawling
                     </div>
                 </div>
-                <div className="unlogged-main-events-index">
+                <h3>Events near you</h3>
+                <div className="unlogged-events-index">
+                    
                     {currEvents.map(event => {
-                        return(<span className='unlogged-event-index-item'>
+                        return(<div className='unlogged-event-index-item'>
                             <h3>{event.date}</h3>
                             <div>{event.title}</div>
-                            <div>{event.location}</div>
-                        </span>
+                            <div>{event.eventAddress}</div>
+                        </div>
                         )
                     })}
                 </div>

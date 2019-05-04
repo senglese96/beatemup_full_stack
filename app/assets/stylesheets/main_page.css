@@ -116,3 +116,19 @@
     animation: slide 15s linear;
     animation-iteration-count: infinite;
 }
+
+.unlogged-event-index-item{
+    height: 220px;
+    width: 330px;
+    box-shadow: 0px 0px 3px #777777;
+    border-radius: 6px;
+    margin: 5px;
+}
+
+.unlogged-events-index{
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    overflow: hidden;
+}
