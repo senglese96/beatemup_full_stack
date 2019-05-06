@@ -11,6 +11,7 @@ class Api::GroupsController < ApplicationController
     def show
         @group = Group.find_by(id: params[:id])
         @members = @group.members
+        @memberships = @group.memberships
         if @group
             render "api/groups/show"
         else

@@ -90,7 +90,23 @@ class MainPage extends React.Component{
             )
         }else{
             return(
-                <div>
+                <div className="logged-main-page">
+                    <div className="logged-greeting">
+                        <h1>Find your next event</h1>
+                        <p>There are {this.props.events.length} events in your area</p>
+                    </div>
+                    <div className='logged-group-container'>
+                        <h3>Suggested Groups</h3>
+                        <div className="logged-group-index">
+                            {this.props.groups.map(group => {
+                                return(
+                                    <div className="logged-group-item">
+                                        <h3>{group.name}</h3>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
                     
                 </div>
             )

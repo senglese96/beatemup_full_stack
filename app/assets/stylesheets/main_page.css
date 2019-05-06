@@ -57,9 +57,7 @@
     z-index: -2;
     background-repeat: no-repeat;
     background-size: cover;
-    animation: fadein 15s ease-in infinite;
-    animation: slide 15s linear;
-    animation-iteration-count: infinite;
+    animation: fadein 15s ease-in infinite, slide 15s linear infinite;
 }
 
 #five{
@@ -100,10 +98,10 @@
 
 @keyframes slide{
     0%{
-        transform: translate3d(0px, 0, 0);
+        transform: translate3d(-200px, 0, 0);
     }
     100%{
-        transform: translate3d(-400px, 0, 0);
+        transform: translate3d(-700px, 0, 0);
     }
 }
     
@@ -183,4 +181,63 @@
 .unlogged-group-name{
     font-weight: 600;
     font-size: 24px;
+}
+
+.logged-greeting{
+    background-color: #00455d;
+    height: 175px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logged-greeting h1{
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 10px;
+}
+
+.logged-greeting p{
+    color: #AAAAAA;
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+.logged-group-container{
+    margin: 25px auto;
+    width: 900px;
+}
+
+.logged-group-container > h3{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.logged-group-index{
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.logged-group-item{
+    width: 280px;
+    height: 170px;
+    margin: 10px 0;
+    border: 1px solid #BBBBBB;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.logged-group-item h3{
+    margin-top: 70px;
+    font-weight: 600;
+    font-size: 26px;
+}
+
+.logged-group-item:hover{
+    cursor: pointer;
 }
