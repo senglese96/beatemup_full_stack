@@ -25,7 +25,6 @@ class SessionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        debugger
         const user = Object.assign({}, this.state);
         this.props.processForm(user);
         this.setState({
@@ -86,10 +85,13 @@ class SessionForm extends React.Component {
         } else{
             errors = null
         }
-
         let demo = null
+        let linkOther = null
         if(this.props.formType === 'login'){
-            demo = <div onClick={this.demoUser}>Demo User</div>
+            demo = <div className='demo-button' onClick={this.demoUser}>Demo User</div>;
+            linkOther = <p className='other-form-link'>Don't have an account? <Link to='/signup'>Sign Up</Link></p>
+        }else{
+            linkOther = <p className='other-form-link'>Already have an account? <Link to='/login'> Log In</Link></p>
         }
 
         return (
@@ -97,7 +99,7 @@ class SessionForm extends React.Component {
             {errors}
             <div className='form-container'>
                 <h3>{formText}</h3>
-                <Link to={'/' + otherType}>{otherText}</Link>
+                {linkOther}
                 <form className='session-form' onSubmit={this.handleSubmit}>
                     <label>Username:
                     <br/>
@@ -107,9 +109,12 @@ class SessionForm extends React.Component {
                     <br/>
                         <input className='session-input' id='password' type="password" value={this.state.password} onChange={this.updatePassword} />
                     </label>
-                    <input type="submit" value={formText} />
+                    <div className='session-buttons'>
+                        <input type="submit" value={formText} />
+                        {demo}
+                    </div>
                 </form>
-                {demo}
+                
             </div>
             </>
         )

@@ -18,7 +18,7 @@ function Modal({ modal, closeModal }) {
                 </span>
                 <div>
                     <Link to="/signup" onClick={closeModal}><div className="modal-link">
-                       <i className="far fa-envelope"></i>   Sign Up With Email</div>
+                        <i className="far fa-envelope"></i> &nbsp; Sign Up With Email</div>
                     </Link>
                 </div>
             </div>

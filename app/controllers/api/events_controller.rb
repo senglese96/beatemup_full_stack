@@ -11,6 +11,7 @@ class Api::EventsController < ApplicationController
 
     def show
         @event = Event.find_by(id: params[:id])
+        @event.date = @event.date.to_formatted_s(:long_ordinal)
         if @event
             render "api/event/show"
         else

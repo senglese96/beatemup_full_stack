@@ -22,7 +22,7 @@ class NavBar extends React.Component{
             return(
                 <div className='logged-in-bar'>
                     <Link to='/'>BeatEmUp</Link>
-                    <span className='nav-buttons'>
+                    <span className='logged-nav-buttons'>
                         <Link to='/newgroup' className='new-group-button'>Start a new group</Link>
                         <Link to='/'>Explore</Link>
                         <button onClick={this.props.logout}>Logout</button>

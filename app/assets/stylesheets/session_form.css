@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    border-top: 1px solid #bbbbbb;
+    border-top: 1px solid #DDDDDD;
     width: 100%;
     height: 350px;
     margin-top: 10px;
@@ -10,7 +10,7 @@
 
 .form-container{
     font-family: Arial, Helvetica, sans-serif;
-    border: 1px solid #BBBBBB;
+    border: 1px solid #DDDDDD;
     position: relative;
     top: 100px;
     margin: 0 auto;
@@ -43,11 +43,18 @@
     border-radius: 4px;
     padding: 10px;
     box-sizing: border-box;
+    border-style: none;
+    background-color: #fafafa;
+    border: 1px solid rgba(0,0,0,.12)
 }
 
-.session-form input[type="submit"]{
+.session-form input[type="text"]:focus, .session-form input[type="password"]:focus{
+    background-color: white;
+}
+
+.session-form input[type="submit"], .demo-button{
     background-color: #f13a59;
-    width: 70px;
+    width: 85px;
     height: 35px;
     border: none;
     border-radius: 4px;
@@ -57,13 +64,13 @@
     color: white;
 }
 
-.session-form input[type="submit"]:hover{
+.session-form input[type="submit"]:hover, .demo-button:hover{
     background-color: red;
     cursor: pointer;
 }
 
 .session-errors{
-    height: 100px;
+    height: 75px;
     width: 600px;
     background-color: rgba(255, 208, 215, 0.877);
     margin: 0 auto;
@@ -73,5 +80,37 @@
     font-size: 36px;
     padding: 25px;
     text-align: center;
+    border-radius: 4px;
+}
+
+.session-errors li{
     color: #b80046;
+}
+
+.demo-button{
+    color: white;
+    width: 100px;
+    text-align: center;
+    box-sizing: border-box;
+    padding:  5px;
+    padding-top: 9px;
+}
+
+.session-buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 25px;
+}
+
+.other-form-link{
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+.other-form-link a{
+    color: #1f24cc;
+}
+
+.other-form-link a:hover{
+    text-decoration: underline;
 }
