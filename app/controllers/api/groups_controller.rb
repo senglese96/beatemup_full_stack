@@ -2,7 +2,8 @@ class Api::GroupsController < ApplicationController
     def create
         @group = Group.new(group_params)
         if @group.save
-            render 'api/groups/show'
+            Membership.create!(group_id: @group.id, member_id: current_user.id)
+            redirect_to api_group_url(@group.id)
         else
             render json: @group.errors.full_messages
         end
@@ -10,8 +11,8 @@ class Api::GroupsController < ApplicationController
 
     def show
         @group = Group.find_by(id: params[:id])
-        @members = @group.members
-        @memberships = @group.memberships
+        @members = @group.members == nil ? [] : @group.members
+        @memberships = @group.memberships == nil ? [] : @group.memberships
         if @group
             render "api/groups/show"
         else
@@ -46,7 +47,7 @@ class Api::GroupsController < ApplicationController
 
     private
 
-    def event_params
+    def group_params
         underscore_params!(params.require(:group).permit(:name, :category, :location, :description))
     end
 end

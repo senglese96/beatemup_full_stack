@@ -4,7 +4,7 @@ const membershipReducer = (state= {}, action) => {
     Object.freeze(state);
     switch(action.type){
         case RECIEVE_GROUP:
-            return Object.assign({}, state, action.group.membership)
+            return Object.assign({}, state, action.group.memberships)
         default:
             return state;
     }

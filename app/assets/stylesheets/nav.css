@@ -1,9 +1,10 @@
 .nav-bar{
     border-bottom: 1px solid #BBBBBB;
-    height: 70px;
+    min-height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 5px;
     background-color: white;
 }
 
@@ -21,7 +22,10 @@
 }
 
 .logged-in-bar{
+    border-bottom: 1px solid #BBBBBB;
+    min-height: 70px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding: 5px;
 }

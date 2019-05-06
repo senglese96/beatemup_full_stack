@@ -1,6 +1,6 @@
 class Api::MembershipsController < ApplicationController
     def create
-        @membership = Membership.new(group_id: params[:group_id], attendee_id: current_user.id)
+        @membership = Membership.new(group_id: params[:group_id], member_id: current_user.id)
         @membership.save
     end
 
