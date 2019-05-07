@@ -1,4 +1,4 @@
-import { RECEIVE_GROUP_ERRORS, RECEIVE_GROUP } from '../actions/session_actions'
+import { RECEIVE_GROUP_ERRORS, RECEIVE_GROUP } from '../actions/group_actions'
 
 const groupErrorsReducer = (state = {}, action) => {
     Object.freeze(state);

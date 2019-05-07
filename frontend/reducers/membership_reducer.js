@@ -1,9 +1,9 @@
-import { RECIEVE_GROUP } from '../actions/group_actions'
+import { RECEIVE_GROUP } from '../actions/group_actions'
 
 const membershipReducer = (state= {}, action) => {
     Object.freeze(state);
     switch(action.type){
-        case RECIEVE_GROUP:
+        case RECEIVE_GROUP:
             return Object.assign({}, state, action.group.memberships)
         default:
             return state;
