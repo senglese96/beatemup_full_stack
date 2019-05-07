@@ -7,6 +7,7 @@ import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container'
 import Modal from './modal';
 import GroupFormContainer from './group_form/group_form_container'
+import GroupShowContainer from './group_show/group_show_container'
 
 const App = () => (
     <> 
@@ -18,8 +19,7 @@ const App = () => (
         <AuthRoute path='/login' component={LoginFormContainer}/>
         <AuthRoute path='/signup' component={SignupFormContainer}/>
         <ProtectedRoute path='/newgroup' component={GroupFormContainer}/>
-        <Route path='/groups/:groupId' />
-        <Route path='/events/:eventId' />
+        <Route path='/groups/:groupId' component={GroupShowContainer}/>
     </>
 )
 

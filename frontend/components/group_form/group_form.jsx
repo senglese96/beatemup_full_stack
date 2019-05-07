@@ -32,7 +32,7 @@ class GroupForm extends React.Component{
             category: this.state.category
         };
         this.props.createGroup(newGroup);
-        <Redirect to='/'/>
+        this.props.history.push('/')
     }
 
     handleCategory(e){

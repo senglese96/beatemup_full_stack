@@ -5,7 +5,7 @@ class Api::GroupsController < ApplicationController
             Membership.create!(group_id: @group.id, member_id: current_user.id)
             redirect_to api_group_url(@group.id)
         else
-            render json: @group.errors.full_messages
+            render json: @group.errors.full_messages, status: 422
         end
     end
 
