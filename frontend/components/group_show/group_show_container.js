@@ -5,7 +5,7 @@ import GroupShow from './group_show'
 
 const mapStateToProps = (state, ownProps) => ({
     group: state.entities.groups[ownProps.match.params.groupId],
-    users: groupMembers(state.entities)
+    users: groupMembers(state.entities, ownProps.match.params.groupId)
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

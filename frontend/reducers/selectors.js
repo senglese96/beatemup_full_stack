@@ -2,7 +2,7 @@ export const groupSelector = (groups) => {
     return Object.values(groups)
 }
 
-export const groupMembers = (entities) => {
+export const groupMembers = (entities, groupId) => {
     let newMemberships = [];
     let memberships = Object.values(entities.memberships);
     let user
