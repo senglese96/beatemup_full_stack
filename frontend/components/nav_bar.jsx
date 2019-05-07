@@ -10,7 +10,7 @@ class NavBar extends React.Component{
         if(!(this.props.loggedIn)){
             return(
                 <div className="nav-bar">
-                    <Link to='/' className="home-button">BeatEmUp</Link>
+                    <Link to='/' className="home-button"><img src="/beatemup_logo.png" height="70px"/></Link>
                     <span>
                         <Link to='/login'>Log In</Link>
                         <a onClick={this.props.openModal}>Sign Up</a>

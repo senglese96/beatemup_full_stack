@@ -18,6 +18,8 @@ const App = () => (
         <AuthRoute path='/login' component={LoginFormContainer}/>
         <AuthRoute path='/signup' component={SignupFormContainer}/>
         <ProtectedRoute path='/newgroup' component={GroupFormContainer}/>
+        <Route path='/groups/:groupId' />
+        <Route path='/events/:eventId' />
     </>
 )
 

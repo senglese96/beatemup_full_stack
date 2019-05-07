@@ -1,11 +1,12 @@
 .nav-bar{
     border-bottom: 1px solid #BBBBBB;
-    min-height: 70px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 5px;
     background-color: white;
+    box-sizing: border-box;
 }
 
 .nav-bar a{
@@ -28,6 +29,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 5px;
+    box-sizing: border-box;
 }
 
 .new-group-button{

@@ -62,26 +62,28 @@ class MainPage extends React.Component{
                     <div className="unlogged-events-index">
                         
                         {currEvents.map(event => {
-                            return(<div className='unlogged-event-index-item'>
+                            return(<Link to={'/events/' + event.id}><div className='unlogged-event-index-item'>
                                 <ul className='unlogged-event-info'>
                                     <li className='unlogged-event-date'>{new Date(event.date).toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' })}</li>
                                     <li className='unlogged-event-title'>{event.title}</li>
                                     <li className='unlogged-event-address'>{event.eventAddress}</li>
                                 </ul>
                             </div>
+                            </Link>
                             )
                         })}
                     </div>
                     <h3>Groups near you</h3>
                     <div className="unlogged-group-index">
                         {currGroups.map(group => {
-                            return(
+                            return(<Link to={'/groups/' + group.id}>
                                 <div className='unlogged-group-item'>
                                     <ul className='unlogged-group-info'>
                                         <li className='unlogged-group-category'>{group.category}</li>
                                         <li className='unlogged-group-name'>{group.name}</li>
                                     </ul>
                                 </div>
+                            </Link>
                             )
                         })}
                     </div>
