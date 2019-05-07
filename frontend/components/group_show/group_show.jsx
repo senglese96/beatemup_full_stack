@@ -18,7 +18,18 @@ class GroupShow extends React.Component{
                     organizer = el
                 }
             })
+            let eventButton = null
+            if(!this.props.currentUser || !(this.props.users.includes(this.props.currentUser))){
+                eventButton = <div className='join-group-button'>Join This Group</div>
+            }
+            else if(this.props.currentUser.id === this.props.group.organizerId){
+                eventButton = <div className='join-group-button'>Create Group Event</div>
+            }else{
+                eventButton = <div className='joined-group-button'>Join This Group</div>
+            }
             return(
+                <>
+                <div className='group-show-background'></div>
                 <div className='group-show-container'>
                     <div className='group-show-header'>
                         <div className='group-image-show'></div>
@@ -31,7 +42,7 @@ class GroupShow extends React.Component{
                         </div>
                     </div>
                     <div className='group-show-navigation'>
-                        <div className='join-group-button'>Request to join</div>
+                        {eventButton}
                     </div>
                     <div className='group-show-details'>
                         <div className='group-show-desc'>
@@ -44,6 +55,7 @@ class GroupShow extends React.Component{
                         </div>
                     </div>
                 </div>
+                </>
             )
         } else{
             return(<div></div>)

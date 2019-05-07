@@ -101,10 +101,11 @@ class MainPage extends React.Component{
                         <h3>Suggested Groups</h3>
                         <div className="logged-group-index">
                             {this.props.groups.map(group => {
-                                return(
+                                return (<Link to={'/groups/' + group.id}>
                                     <div className="logged-group-item">
                                         <h3>{group.name}</h3>
                                     </div>
+                                </Link>
                                 )
                             })}
                         </div>
