@@ -28,4 +28,3 @@ bundle.js.map
 /config/master.key
 .DS_Store
 npm-debug.log
-/config/credentials.yml.enc
