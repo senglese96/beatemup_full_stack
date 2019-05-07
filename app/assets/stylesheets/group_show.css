@@ -1,0 +1,43 @@
+.group-show-container{
+    background-color: #f1f1f1;
+    background-size: cover;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.group-show-header{
+    height: 350px;
+    border-bottom: 1px solid #aaaaaa;
+    box-sizing: border-box;
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.group-image-show{
+    height: 330px;
+    width: 600px;
+    background-color: blue;
+    border-radius: 10px;
+}
+
+.group-header-info{
+    width: 370px;
+    height: 330px;
+}
+
+.group-header-info h1{
+    font-size: 34px;
+    font-weight: 600;
+}
+
+.group-header-info ul{
+    margin-top: 40px;
+    font-size: 16px;
+}
+
+.group-header-info ul li{
+    color: #777777;
+    margin-top: 10px;
+}

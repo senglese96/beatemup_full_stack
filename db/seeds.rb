@@ -13,7 +13,9 @@ g = User.create!(username: 'GO1', password: 'GoUnoLoco')
 d = User.create!(username: 'NoHablo96', password: 'GreenGoddess')
 e = User.create!(username: 'Jebaily', password: 'Disqualified')
 Group.destroy_all
-hk = Group.create!(category: 'Smash Ultimate', name: 'Help Katie', location: 'fremont', description: 'ohlone ultimate club')
+hk = Group.create!(category: 'Smash Ultimate', name: 'Help Katie', location: 'fremont', description: 'ohlone ultimate club', organizer_id: d.id)
+inferno = Group.create!(category: 'Street Fighter V', name: 'Team  Inferno', location: 'New York', 
+description: 'The best damn team in the street fighter league', organizer_id: p.id)
 
 Event.destroy_all
 Event.create!(title: 'Bay Battles', 
@@ -41,7 +43,8 @@ date: Date.new(2019, 6, 30))
 Membership.destroy_all
 Membership.create!(member_id: d.id, group_id: hk.id)
 Membership.create!(member_id: m.id, group_id: hk.id)
+Membership.create!(member_id: p.id, group_id: inferno.id)
 
-Membership.destroy_all
+Attendance.destroy_all
 Attendance.create!(attendee_id: p.id, event_id: ceo.id)
 Attendance.create!(attendee_id: g.id, event_id: ceo.id)
