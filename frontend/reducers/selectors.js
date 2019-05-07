@@ -6,7 +6,6 @@ export const groupMembers = (entities) => {
     let newMemberships = [];
     let memberships = Object.values(entities.memberships);
     let user
-    debugger
     memberships.forEach(element => {
         if(element.groupId === groupId){
             user = entities.users[element.memberId]
