@@ -17,7 +17,7 @@ class Api::EventsController < ApplicationController
         @attendances = @event.attendances;
         @users = @event.attendees
         @group = @event.group
-        @users << @event.host
+        @host = @event.host
         if @event
             render "api/events/show"
         else

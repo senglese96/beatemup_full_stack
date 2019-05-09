@@ -107,7 +107,7 @@ class MainPage extends React.Component{
         }else{
             let groupButton;
             let calendarButton;
-            let currIndex
+            let currIndex;
             if(this.state.mainSwitch === 'groups'){
                 groupButton = <div className='group-index-button' id='pressed'>Groups</div>
                 calendarButton = <div className='event-index-button' onClick={this.switchPage}>Calendar</div>
@@ -127,8 +127,33 @@ class MainPage extends React.Component{
             }else{
                 groupButton = <div className='group-index-button' onClick={this.switchPage}>Groups</div>
                 calendarButton = <div className='event-index-button' id='pressed'>Calendar</div>
+                let eventDate
                 currIndex = <div className='logged-index'>
                     <h3>Upcoming Events</h3>
+                    <div className='logged-event-index'>
+
+                        {this.props.events.map(event => {
+                            if(eventDate === undefined || eventDate < new Date(event.date)){
+                                eventDate = new Date(event.date)
+                                return(
+                                    <>
+                                    <h3>{eventDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }).toUpperCase()}</h3>
+                                    <div className='logged-event-item'>
+                                        <div className='logged-event-title'><Link to={'/events/' + event.id}>{event.title}</Link></div>
+                                        <div className='logged-event-attendees'>{event.attendeeIds.length} people are attending this</div>
+                                    </div>
+                                    </>
+                                )
+                            } else{
+                                return(
+                                    <div className='logged-event-item'>
+                                        <div className='logged-event-title'><Link to={'/events/' + event.id}>{event.title}</Link></div>
+                                        <div className='logged-event-category'>{event.category}</div>
+                                    </div>
+                                )
+                            }
+                        })}
+                    </div>
                 </div>
             }
             return(
@@ -147,7 +172,6 @@ class MainPage extends React.Component{
                         </div>
                         {currIndex}
                     </div>
-                    
                 </div>
             )
         }

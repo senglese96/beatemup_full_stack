@@ -14,6 +14,9 @@ json.set! :users do
             json.partial! 'api/users/user', user: attendee
         end
     end
+    json.set! @host.id do
+        json.partial! 'api/users/user', user: @host
+    end
 end
 json.set! :groups do
     json.set! @group.id do

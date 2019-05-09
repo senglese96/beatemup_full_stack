@@ -50,7 +50,9 @@ class GroupForm extends React.Component{
     handleLocation(e) {
         this.setState({location: e.currentTarget.value});
     }
-
+    handlePhoto(e){
+        this.setState({photoFile:e.currentTarget.files[0]})
+    }
     render(){
         if(this.state.currentInput === 0){
             return(

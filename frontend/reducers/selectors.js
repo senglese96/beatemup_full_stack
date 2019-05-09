@@ -52,3 +52,25 @@ export const getHost =(entities, event) => {
     }
     return null;
 }
+
+export const sortEventsDate = (events) => {
+    let newEvents = Object.values(events);
+    let currDate = new Date();
+    let currEvents = [];
+    newEvents.forEach(event => {
+        if(currDate < new Date(event.date)){
+            currEvents.push(event);
+        };
+    })
+    const compare = function(a, b){
+        a = new Date(a.date)
+        b = new Date(b.date)
+        if(a > b){
+            return 1;
+        } else if(b > a){
+            return -1;
+        }
+        return 0;
+    }
+    return newEvents.sort(compare)
+}

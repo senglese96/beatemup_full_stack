@@ -18,7 +18,6 @@ class EventShow extends React.Component{
     }
 
     render(){
-        debugger
         if(this.isFetched){
             let goingButton = null
             if (!this.props.currentUser) {
@@ -45,7 +44,7 @@ class EventShow extends React.Component{
                             </div>
                             <div className='event-show-buttons'>
                                 <h1>Are you going?</h1>
-                                <p>{this.props.users.length} people going</p>
+                                <p>{this.props.event.attendeeIds.length} people going</p>
                                 {goingButton}
                             </div>
                         </div>
