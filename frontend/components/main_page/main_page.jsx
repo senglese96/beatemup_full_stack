@@ -8,7 +8,8 @@ class MainPage extends React.Component{
         this.state = {
             backgroundImg: <div className='slide-fade' id='one'></div>,  
             eIndex: 0,
-            gIndex: 0     
+            gIndex: 0,
+            mainSwitch: 'groups'    
         }
         this.slideshowAnimation = this.slideshowAnimation.bind(this)
         this.animations = [
@@ -17,7 +18,8 @@ class MainPage extends React.Component{
             <div className='slide-fade' id='three'></div>,
             <div className='slide-fade' id='four'></div>,
             <div className='slide-fade' id='five'></div>
-        ]
+        ];
+        this.switchPage = this.switchPage.bind(this)
     }
 
     handleClick(e){
@@ -39,6 +41,18 @@ class MainPage extends React.Component{
             this.animations.push(banana);
             that.setState({backgroundImg: this.animations[0]})
         }, 15000)
+    }
+
+    handleSearch(e){
+
+    }
+
+    switchPage(){
+        if(this.state.mainSwitch === 'groups'){
+            this.setState({mainSwitch: 'events'})
+        }else{
+            this.setState({mainSwitch: 'groups'})
+        }
     }
 
     render(){
@@ -91,6 +105,32 @@ class MainPage extends React.Component{
                 </>
             )
         }else{
+            let groupButton;
+            let calendarButton;
+            let currIndex
+            if(this.state.mainSwitch === 'groups'){
+                groupButton = <div className='group-index-button' id='pressed'>Groups</div>
+                calendarButton = <div className='event-index-button' onClick={this.switchPage}>Calendar</div>
+                currIndex = <div className='logged-index'>
+                <h3>Suggested Groups</h3>
+                    <div className="logged-group-index">
+                        {this.props.groups.map(group => {
+                            return (<Link to={'/groups/' + group.id}>
+                                <div className="logged-group-item">
+                                    <h3>{group.name}</h3>
+                                </div>
+                            </Link>
+                            )
+                        })}
+                    </div>
+                </div>
+            }else{
+                groupButton = <div className='group-index-button' onClick={this.switchPage}>Groups</div>
+                calendarButton = <div className='event-index-button' id='pressed'>Calendar</div>
+                currIndex = <div className='logged-index'>
+                    <h3>Upcoming Events</h3>
+                </div>
+            }
             return(
                 <div className="logged-main-page">
                     <div className="logged-greeting">
@@ -98,17 +138,14 @@ class MainPage extends React.Component{
                         <p>There are {this.props.events.length} events in your area</p>
                     </div>
                     <div className='logged-group-container'>
-                        <h3>Suggested Groups</h3>
-                        <div className="logged-group-index">
-                            {this.props.groups.map(group => {
-                                return (<Link to={'/groups/' + group.id}>
-                                    <div className="logged-group-item">
-                                        <h3>{group.name}</h3>
-                                    </div>
-                                </Link>
-                                )
-                            })}
+                        <div className='logged-search-bar'>
+                            <input type="text" />
+                            <div className='page-selector'>
+                                {groupButton}
+                                {calendarButton}
+                            </div>
                         </div>
+                        {currIndex}
                     </div>
                     
                 </div>

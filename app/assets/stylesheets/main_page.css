@@ -130,7 +130,8 @@
     margin: 5px;
     padding: 15px;
     box-sizing: border-box;
-    transition-duration: 0.3s
+    transition-duration: 0.3s;
+    background-color: white;
 }
 
 .unlogged-event-index-item:hover{
@@ -148,7 +149,7 @@
 
 .unlogged-main-content{
     margin: 0 auto;
-    width: 60%;
+    width: 1050px;
 }
 
 .unlogged-event-info{
@@ -156,6 +157,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
 }
 
 .unlogged-event-date{
@@ -192,7 +194,6 @@
     box-shadow: 0px 2px 5px #666666;
     transform: translateY(-2px)
 }
-
 
 .unlogged-group-category{
     margin-bottom: 20px;
@@ -266,4 +267,57 @@
 
 a{
     text-decoration: none;
+}
+
+.logged-search-bar{
+    background-color: #0f1721;
+    width: 900px;
+    height: 65px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    top: -45px;
+}
+
+.logged-search-bar input{
+    width: 250px;
+    height: 38px;
+    border-radius: 3px;
+    border-style: none;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.page-selector{
+    border-radius: 4px;
+    border: 1px solid #888888;
+    width: 200px;
+    height: 42px;
+    overflow: hidden;
+}
+
+.group-index-button, .event-index-button{
+    display: inline-block;
+    width: 100px;
+    height: 42px;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 12px;
+    color: #BBBBBB;
+}
+
+#pressed{
+    background-color: #43585c;
+    color: white;
+    font-weight: 600;
+    border-style: inset;
+    border-top: 1px inset black;
+    border-style: groove;
+}
+
+.page-selector:hover{
+    cursor: pointer;
 }

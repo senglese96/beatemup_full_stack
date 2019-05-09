@@ -104,7 +104,7 @@ class GroupForm extends React.Component{
                         <div className='group-form-content'>
                             <label>Give your group a brief description
                                 <br/>
-                                <input type="text" value={this.state.description} onChange={this.handleDesc} />
+                                <textarea value={this.state.description} onChange={this.handleDesc} ></textarea>
                             </label>
                         </div>
                     </form>

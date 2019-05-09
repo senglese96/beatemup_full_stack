@@ -1,17 +1,17 @@
-.group-form-container{
+.event-form-container{
     margin: 50px auto;
     width: 700px;
     height: 500px;
 }
 
-.group-form-container label{
+.event-form-container label{
     font-size: 40px;
     font-weight: 700;
     margin: 30px;
     text-align: center;
 }
 
-.group-form-content label input[type="text"]{
+.event-form-content label input[type="text"], .event-form-content label input[type="date"]{
     margin: 70px auto;
     width: 700px;
     height: 40px;
@@ -23,7 +23,19 @@
     border: 1px solid rgba(0,0,0,.12);
 }
 
-.group-form-content label textarea{
+.event-form-content label textarea{
+    margin: 70px auto;
+    width: 700px;
+    height: 130px;
+    border-radius: 4px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-style: none;
+    font-size: 20px;
+    border: 1px solid rgba(0,0,0,.12);
+}
+
+.event-form-content label textarea{
      margin: 70px auto;
     width: 700px;
     height: 130px;
@@ -35,7 +47,7 @@
     border: 1px solid rgba(0,0,0,.12);
 }
 
-.group-form-next{
+.event-form-next{
     position: absolute;
     bottom: 20%;
     right: 20%;
@@ -50,12 +62,12 @@
     box-sizing: border-box;
 }
 
-.group-form-next:hover{
+.event-form-next:hover{
     cursor: pointer;
     background-color: red;
 }
 
-.group-form-container input[type='submit']{
+.event-form-container input[type='submit']{
     font-family: inherit;
     border: 0;
     margin-top: 114px;
@@ -71,12 +83,12 @@
     font-size: 16px;
 }
 
-.group-form-container input[type='submit']:hover{
+.event-form-container input[type='submit']:hover{
     cursor: pointer;
     background-color: red;
 }
 
-.group-form-content{
+.event-form-content{
     display: flex;
     flex-direction: column;
     align-items: center;

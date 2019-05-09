@@ -2,8 +2,11 @@ class Api::EventsController < ApplicationController
 
     def create
         @event = Event.new(event_params)
+        if @event.host_id === nil
+            @event.host_id = current_user.id
+        end
         if @event.save
-            render 'api/events/show'
+            redirect_to api_event_url(@event.id)
         else
             render json: @event.errors.full_messages
         end
@@ -11,9 +14,12 @@ class Api::EventsController < ApplicationController
 
     def show
         @event = Event.find_by(id: params[:id])
-        @event.date = @event.date.to_formatted_s(:long_ordinal)
+        @attendances = @event.attendances;
+        @users = @event.attendees
+        @group = @event.group
+        @users << @event.host
         if @event
-            render "api/event/show"
+            render "api/events/show"
         else
             render json: 'No Event Here', status: 404
         end

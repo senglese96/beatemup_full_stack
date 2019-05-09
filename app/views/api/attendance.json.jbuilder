@@ -1,0 +1,1 @@
+json.extract! @attendance, :attendee_id, :event_id, :id

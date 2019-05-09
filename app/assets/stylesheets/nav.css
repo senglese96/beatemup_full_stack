@@ -32,16 +32,19 @@
     box-sizing: border-box;
 }
 
-.new-group-button{
-    border-right: 1px solid #BBBBBB;
-    color: red;
-}
-
 .logged-nav-buttons a{
     padding-right: 9px;
     padding-left: 9px;
     text-decoration: none;
+}
+
+.other-nav-button{
     color: #999999;
+}
+
+#new-group-button{
+    border-right: 1px solid #BBBBBB;
+    color: red;
 }
 
 .other-nav-button:hover{
@@ -49,6 +52,6 @@
     color: #1f24cc;
 }
 
-.new-group-button:hover{
+#new-group-button:hover{
     text-decoration: underline;
 }

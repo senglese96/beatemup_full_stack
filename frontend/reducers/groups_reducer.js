@@ -3,6 +3,8 @@ import {
     RECEIVE_GROUP,
     REMOVE_GROUP,
 } from '../actions/group_actions';
+
+import { RECEIVE_EVENT } from '../actions/event_actions'
 import merge from 'lodash/merge';
 
 const eventsReducer = (state = {}, action) => {
@@ -17,6 +19,8 @@ const eventsReducer = (state = {}, action) => {
             let someState = merge({}, state)
             delete someState[action.groupId]
             return someState
+        case RECEIVE_EVENT:
+            return Object.assign({}, state, action.event.groups)
         default:
             return state
     }

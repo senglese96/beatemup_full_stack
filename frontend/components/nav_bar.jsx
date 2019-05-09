@@ -23,7 +23,7 @@ class NavBar extends React.Component{
                 <div className='logged-in-bar'>
                     <Link to='/'><img src="/beatemup_logo.png" height="70px" /></Link>
                     <span className='logged-nav-buttons'>
-                        <Link to='/newgroup' className='new-group-button'>Start a new group</Link>
+                        <Link to='/newgroup' id='new-group-button'>Start a new group</Link>
                         <Link  className='other-nav-button' to='/'>Explore</Link>
                         <button onClick={this.props.logout}>Logout</button>
                     </span>

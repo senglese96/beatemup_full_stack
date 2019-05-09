@@ -9,6 +9,7 @@ import Modal from './modal';
 import GroupFormContainer from './group_form/group_form_container'
 import GroupShowContainer from './group_show/group_show_container'
 import EventShowContainer from './event_show/event_show_container'
+import EventFormContainer from './event_form/event_form_container'
 
 const App = () => (
     <> 
@@ -20,6 +21,7 @@ const App = () => (
         <AuthRoute path='/login' component={LoginFormContainer}/>
         <AuthRoute path='/signup' component={SignupFormContainer}/>
         <ProtectedRoute path='/newgroup' component={GroupFormContainer}/>
+        <ProtectedRoute path='/newevent' component={EventFormContainer}/>
         <Route path='/groups/:groupId' component={GroupShowContainer}/>
         <Route path='/events/:eventId' component={EventShowContainer}/>
     </>

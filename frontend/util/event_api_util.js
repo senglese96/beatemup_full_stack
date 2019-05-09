@@ -39,6 +39,6 @@ export const deleteEvent = (eventId) => {
 export const createAttendance = (eventId) => {
     return $.ajax({
         method: 'POST',
-        url: 'api/events/' + eventId + '/memberships'
+        url: 'api/events/' + eventId + '/attendances'
     })
 }

@@ -3,6 +3,7 @@ import * as APIUtil from '../util/group_api_util';
 export const RECEIVE_GROUPS = 'RECEIVE_GROUPS';
 export const RECEIVE_GROUP = 'RECEIVE_GROUP';
 export const REMOVE_GROUP = 'REMOVE_GROUP';
+export const RECEIVE_MEMBERSHIP = 'RECEIVE_MEMBERSHIP'
 export const RECEIVE_GROUP_ERRORS = "RECEIVE_GROUP_ERRORS";
 
 const receiveGroups = groups => ({
@@ -23,6 +24,11 @@ const removeGroup = groupId => ({
 const receiveGroupErrors = errors => ({
     type: RECEIVE_GROUP_ERRORS,
     errors
+})
+
+const receiveMembership = membership => ({
+    type: RECEIVE_MEMBERSHIP,
+    membership
 })
 
 export const fetchGroups = () => dispatch => {
@@ -48,4 +54,9 @@ export const updateGroup = group => dispatch => {
 export const deleteGroup = groupId => dispatch => {
     APIUtil.deleteGroup(groupId)
         .then(group => dispatch(removeGroup(group.id)), errors => receiveGroupErrors(errors.responseJSON))
+}
+
+export const joinGroup = groupId => dispatch => {
+    APIUtil.createMembership(groupId)
+        .then(membership => dispatch(receiveMembership(membership)))
 }
