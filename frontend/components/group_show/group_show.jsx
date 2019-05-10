@@ -45,7 +45,7 @@ class GroupShow extends React.Component{
                 <div className='group-show-background'>
                 <div className='group-show-container'>
                     <div className='group-show-header'>
-                        <div className='group-image-show'></div>
+                        <div className='group-image-show'><img src={this.props.group.photoUrl}/></div>
                         <div className='group-header-info'>
                             <h1>{this.props.group.name}</h1>
                             <ul>

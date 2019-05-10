@@ -1,6 +1,11 @@
 class Api::GroupsController < ApplicationController
     def create
+        debugger
         @group = Group.new(group_params)
+        if !@group.photo.attached?
+            file = File.open('/public/beatemup_logo.png')
+            @group.photo.attach(io: file, filename: 'beatemup_logo.png')
+        end
         if @group.organizer_id == nil
             @group.organizer_id = current_user.id
         end
@@ -51,6 +56,6 @@ class Api::GroupsController < ApplicationController
     private
 
     def group_params
-        underscore_params!(params.require(:group).permit(:name, :category, :location, :description))
+        underscore_params!(params.require(:group).permit(:name, :category, :location, :description, :photo))
     end
 end

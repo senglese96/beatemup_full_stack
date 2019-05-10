@@ -9,6 +9,7 @@ class GroupForm extends React.Component{
             name: '',
             description: '',
             category: '',
+            photoFile: null,
             currentInput: 0
         }
         this.switchForm = this.switchForm.bind(this)
@@ -17,6 +18,7 @@ class GroupForm extends React.Component{
         this.handleDesc = this.handleDesc.bind(this)
         this.handleLocation = this.handleLocation.bind(this)
         this.handleName = this.handleName.bind(this)
+        this.handlePhoto = this.handlePhoto.bind(this)
     }
 
     switchForm(){
@@ -25,12 +27,12 @@ class GroupForm extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
-        let newGroup = {
-            name: this.state.name,
-            location: this.state.location,
-            description: this.state.description,
-            category: this.state.category
-        };
+        let newGroup = new FormData();
+        newGroup.append("group[location]", this.state.location)
+        newGroup.append("group[name]", this.state.name)
+        newGroup.append("group[description]", this.state.description)
+        newGroup.append("group[category]", this.state.category)
+        newGroup.append("group[photo]", this.state.photoFile)
         this.props.createGroup(newGroup);
         this.props.history.push('/')
     }
@@ -51,7 +53,7 @@ class GroupForm extends React.Component{
         this.setState({location: e.currentTarget.value});
     }
     handlePhoto(e){
-        this.setState({photoFile:e.currentTarget.files[0]})
+        this.setState({photoFile: e.currentTarget.files[0]})
     }
     render(){
         if(this.state.currentInput === 0){
@@ -115,6 +117,20 @@ class GroupForm extends React.Component{
             );
         }
         if (this.state.currentInput === 4) {
+            return (
+                <div className='group-form-container'>
+                    <form onSubmit={this.handleSubmit}>
+                        <div className='group-form-content'>
+                            <label>Upload a photo for your event
+                                <input type="file" onChange={this.handlePhoto} />
+                            </label>
+                        </div>
+                    </form>
+                    <div onClick={this.switchForm} className='group-form-next'>Next</div>
+                </div>
+            );
+        }
+        if (this.state.currentInput === 5) {
             return (
                 <div className='group-form-container'>
                     <form onSubmit={this.handleSubmit}>

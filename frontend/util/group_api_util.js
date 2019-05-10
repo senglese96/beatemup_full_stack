@@ -14,10 +14,13 @@ export const fetchGroup = (groupId) => {
 }
 
 export const createGroup = group => {
+    debugger
     return $.ajax({
         method: 'POST',
         url: 'api/groups',
-        data: { group }
+        data: group,
+        processData: false,
+        contentType: false
     })
 }
 

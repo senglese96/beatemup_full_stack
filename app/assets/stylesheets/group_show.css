@@ -24,9 +24,13 @@
 }
 
 .group-image-show{
-    height: 330px;
     width: 600px;
-    background-color: blue;
+    height: 330px;
+}
+
+.group-image-show img{
+    max-height: 330px;
+    max-width: 600px;
     border-radius: 10px;
 }
 
