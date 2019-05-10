@@ -19,7 +19,7 @@ wb = User.create!(username: 'WhiteBoi', password: 'ScaryGuy')
 semj = User.create!(username: 'semij', password: 'chipdamage')
 lffn = User.create!(username: 'Leffen', password: 'evidencezip')
 sfd = User.create!(username: 'swiftfoxdash', password: 'peabella')
-patrick = User.create!(username: 'Fraud', passweiweiword: 'offthestage')
+patrick = User.create!(username: 'Fraud', password: 'offthestage')
 wesley = User.create!(username: 'Mentaiko', password: 'shoRyuKen')
 ppmd= User.create!(username: 'PPMD', password: 'illbeback')
 m2k= User.create!(username: 'Mew2King', password: 'lolm2k')
@@ -61,7 +61,7 @@ five_gods.photo.attach(io: file, filename: "five_gods.jpg")
 
 file = open("https://s3-us-west-1.amazonaws.com/beat-em-up-seeds/skullgirls.jpg")
 skullgirls = Group.create!(category: 'Skullgirls', name: 'Skullgirls Lovers', location: 'Texas', 
-description: 'High level players of the fighting game skullgirls. we meet at such and such a time in such and such a place.', organizer_id: sfd.id)
+description: 'High level players of the fighting game skullgirls. We meet at such and such a time in such and such a place.', organizer_id: sfd.id)
 skullgirls.photo.attach(io: file, filename: "skullgirls.jpg")
 
 file = open("https://s3-us-west-1.amazonaws.com/beat-em-up-seeds/evo.jpg")
@@ -71,7 +71,7 @@ evo.photo.attach(io: file, filename: "evo.jpg")
 
 file = open("https://s3-us-west-1.amazonaws.com/beat-em-up-seeds/fighterz.jpg")
 fighterz = Group.create!(category: 'Dragon Ball FighterZ', name: 'Bardock Boys', location: 'Japan', 
-description: 'Bardock is the friggin bestand this group is here to prove it.', organizer_id: g.id)
+description: 'Bardock is the friggin best and this group is here to prove it.', organizer_id: g.id)
 fighterz.photo.attach(io: file, filename: "fighterz.jpg")
 
 Event.destroy_all
@@ -89,7 +89,7 @@ event_address: 'Las Vegas',
 category: 'tournament',
 host_id: mrwizard.id,
 details: 'Evo tournament',
-date: Date.new(2019, 6, 30)
+date: Date.new(2019, 6, 30),
 group_id: evo.id)
 
 evo_j = Event.create!(title: 'EVO Japan', 
@@ -97,7 +97,7 @@ event_address: 'Tokyo',
 category: 'tournament',
 host_id: mrwizard.id,
 details: 'The biggest fighting game tournament in Japan',
-date: Date.new(2019, 8, 10)
+date: Date.new(2019, 8, 10),
 group_id: evo.id)
 
 
@@ -106,7 +106,7 @@ event_address: 'New York',
 category: 'tournament',
 host_id: p.id,
 details: 'Street fighter league pits the biggest pros in street fighter against one another',
-date: Date.new(2019, 5, 30)
+date: Date.new(2019, 5, 30),
 group_id: inferno.id)
 
 combo_breaker = Event.create!(title: 'Combo Breaker', 
@@ -114,7 +114,7 @@ event_address: 'Florida',
 category: 'tournament',
 host_id: sonic.id,
 details: 'Florida Major tournament featuring all of the top talent in fighting games',
-date: Date.new(2019, 6, 27)
+date: Date.new(2019, 6, 28),
 group_id: skullgirls.id)
 
 summit = Event.create!(title: 'Summit of Power', 
@@ -122,7 +122,7 @@ event_address: 'California',
 category: 'tournament',
 host_id: g.id,
 details: 'Evo tournament',
-date: Date.new(2019, 6, 21)
+date: Date.new(2019, 6, 21),
 group_id: fighterz.id)
 
 movie = Event.create!(title: 'Movie meetup', 
@@ -130,7 +130,7 @@ event_address: 'Fremont',
 category: 'Social Meetup',
 host_id: d.id,
 details: 'getting together to watch a movie!',
-date: Date.new(2019, 6, 30)
+date: Date.new(2019, 6, 30),
 group_id: hk.id)
 
 lab_f = Event.create!(title: 'Practice Session', 
@@ -138,7 +138,7 @@ event_address: 'Los Angeles',
 category: 'Practice',
 host_id: sonic.id,
 details: 'P',
-date: Date.new(2019, 6, 30)
+date: Date.new(2019, 6, 30),
 group_id: skullgirls.id)
 
 ssc = Event.create!(title: 'Super Smash Con', 
@@ -146,7 +146,7 @@ event_address: 'Maryland',
 category: 'convention',
 host_id: gimr.id,
 details: 'A massive gathering for all people who love super smash bros!',
-date: Date.new(2019, 8, 10)
+date: Date.new(2019, 8, 10),
 group_id: vgbc.id)
 
 glitch = Event.create!(title: 'Glitch 6', 
@@ -154,7 +154,7 @@ event_address: 'Maryland',
 category: 'tournament',
 host_id: gimr.id,
 details: 'Tournament series in maryland hosted by vgbootcamp!',
-date: Date.new(2019, 7, 16)
+date: Date.new(2019, 7, 16),
 group_id: vgbc.id)
 
 funday = Event.create!(title: 'Funday Tuesday', 
@@ -162,7 +162,7 @@ event_address: 'Los Angeles',
 category: 'Practice',
 host_id: m.id,
 details: 'On a tuesday!',
-date: Date.new(2019, 5, 28)
+date: Date.new(2019, 5, 28),
 group_id: norwalk.id)
 
 the_mang = Event.create!(title: 'The Mango', 
@@ -170,7 +170,7 @@ event_address: 'Los Angeles',
 category: 'Tournament',
 host_id: m.id,
 details: 'The man, the myth, the mango returns with his own tournament series. BYOB.',
-date: Date.new(2019, 5, 28)
+date: Date.new(2019, 6, 28),
 group_id: norwalk.id)
 
 
@@ -198,6 +198,8 @@ Membership.create!(member_id: m.id, group_id: norwalk.id)
 Membership.create!(member_id: alex19.id, group_id: norwalk.id)
 Membership.create!(member_id: lucky.id, group_id: norwalk.id)
 Membership.create!(member_id: s2j.id, group_id: norwalk.id)
+Membership.create!(member_id: gimr.id, group_id: vgbc.id)
+Membership.create!(member_id: mrwizard.id, group_id: evo.id)
 
 Attendance.destroy_all
 Attendance.create!(attendee_id: p.id, event_id: evo_t.id)
@@ -231,7 +233,7 @@ Attendance.create!(attendee_id: patrick.id, event_id: movie.id)
 Attendance.create!(attendee_id: wesley.id, event_id: movie.id)
 Attendance.create!(attendee_id: d.id, event_id: movie.id)
 Attendance.create!(attendee_id: wei.id, event_id: movie.id)
-Attendance.create!(attendee_id: llfn.id, event_id: lab_f.id)
+Attendance.create!(attendee_id: lffn.id, event_id: lab_f.id)
 Attendance.create!(attendee_id: g.id, event_id: lab_f.id)
 Attendance.create!(attendee_id: sonic.id, event_id: lab_f.id)
 Attendance.create!(attendee_id: gimr.id, event_id: lab_f.id)
@@ -270,7 +272,7 @@ Attendance.create!(attendee_id: ppmd.id, event_id: the_mang.id)
 Attendance.create!(attendee_id: gimr.id, event_id: the_mang.id)
 Attendance.create!(attendee_id: s2j.id, event_id: the_mang.id)
 Attendance.create!(attendee_id: lucky.id, event_id: the_mang.id)
-Attendance.create!(attendee_id: llfn.id, event_id: summit.id)
+Attendance.create!(attendee_id: lffn.id, event_id: summit.id)
 Attendance.create!(attendee_id: g.id, event_id: summit.id)
 Attendance.create!(attendee_id: sonic.id, event_id: summit.id)
 Attendance.create!(attendee_id: semj.id, event_id: summit.id)

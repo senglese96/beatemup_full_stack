@@ -4,11 +4,13 @@ import  { Link } from 'react-router-dom'
 class GroupShow extends React.Component{
     constructor(props){
         super(props);
+        this.fetched = false;
         this.joinThisGroup = this.joinThisGroup.bind(this)
     }
 
     componentDidMount(){
         this.props.fetchGroup(this.props.match.params.groupId);
+        this.fetched = true
     }
 
     joinThisGroup(){
@@ -16,7 +18,7 @@ class GroupShow extends React.Component{
     }
 
     render(){
-        if(this.props.users.length != 0){
+        if(this.fetched){
             let organizer = null;
             this.props.users.forEach(el => {
                 if(el.id == this.props.group.organizerId){
@@ -40,6 +42,7 @@ class GroupShow extends React.Component{
             }else{
                 eventButton = <div className='joined-group-button'>Group Joined</div>
             }
+            debugger
             return(
                 <>
                 <div className='group-show-background'>

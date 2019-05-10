@@ -148,7 +148,7 @@ class MainPage extends React.Component{
                                 return(
                                     <div className='logged-event-item'>
                                         <div className='logged-event-title'><Link to={'/events/' + event.id}>{event.title}</Link></div>
-                                        <div className='logged-event-category'>{event.category}</div>
+                                        <div className='logged-event-attendees'>{event.attendeeIds.length} people are attending this</div>
                                     </div>
                                 )
                             }
