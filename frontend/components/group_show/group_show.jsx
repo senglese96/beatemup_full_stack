@@ -42,7 +42,6 @@ class GroupShow extends React.Component{
             }else{
                 eventButton = <div className='joined-group-button'>Group Joined</div>
             }
-            debugger
             return(
                 <>
                 <div className='group-show-background'>

@@ -21,8 +21,14 @@ class EventForm extends React.Component{
         this.handleTitle = this.handleTitle.bind(this)
     }
 
-    switchForm() {
-        this.setState({ currentInput: this.state.currentInput + 1 })
+    switchForm(e) {
+        if (e.type !== 'click') {
+            if (e.key == 'Enter') {
+                this.setState({ currentInput: this.state.currentInput + 1 })
+            }
+        } else {
+            this.setState({ currentInput: this.state.currentInput + 1 })
+        }
     }
 
     handleSubmit(e) {
@@ -68,7 +74,7 @@ class EventForm extends React.Component{
                         <div className='event-form-content'>
                             <label>What is the name of your event
                                 <br />
-                                <input type="text" value={this.state.title} onChange={this.handleTitle} />
+                                <input type="text" value={this.state.title} onChange={this.handleTitle} onKeyPress={this.switchForm}/>
                             </label>
                         </div>
                     </form>
@@ -83,7 +89,7 @@ class EventForm extends React.Component{
                         <div className='event-form-content'>
                             <label>Where is it going to be held
                                 <br />
-                                <input type="text" value={this.state.eventAddress} onChange={this.handleAddress} />
+                                <input type="text" value={this.state.eventAddress} onChange={this.handleAddress} onKeyPress={this.switchForm}/>
                             </label>
                         </div>
                     </form>
@@ -98,7 +104,7 @@ class EventForm extends React.Component{
                         <div className='event-form-content'>
                             <label>What day does it start on
                                 <br />
-                                <input type="date" value={this.state.date} onChange={this.handleDate} />
+                                <input type="date" value={this.state.date} onChange={this.handleDate} onKeyPress={this.switchForm}/>
                             </label>
                         </div>
                     </form>
@@ -113,7 +119,7 @@ class EventForm extends React.Component{
                         <div className='event-form-content'>
                             <label>What game will be played
                                 <br />
-                                <input type="text" value={this.state.category} onChange={this.handleCategory} />
+                                <input type="text" value={this.state.category} onChange={this.handleCategory} onKeyPress={this.switchForm}/>
                             </label>
                         </div>
                     </form>
@@ -128,7 +134,7 @@ class EventForm extends React.Component{
                         <div className='event-form-content'>
                             <label>Put all additional details here
                                 <br />
-                                <textarea type="text" value={this.state.details} onChange={this.handleDetails}></textarea>
+                                <textarea type="text" value={this.state.details} onChange={this.handleDetails} onKeyPress={this.switchForm}></textarea>
                             </label>
                         </div>
                     </form>

@@ -56,6 +56,7 @@ class SessionForm extends React.Component {
         }, 1000);
         setTimeout(() => {
             this.setState({username: 'NoHablo96', password: 'GreenGoddess'})
+            this.handleSubmit();
         }, 2500)
     }
 
@@ -74,7 +75,6 @@ class SessionForm extends React.Component {
             otherText = 'Log In'
             otherType = 'login'
         }
-        // TODO refactor into two components. the forms are too different.
         let errors
         if(this.props.errors.length !== 0){
             errors = <ul className='session-errors'>

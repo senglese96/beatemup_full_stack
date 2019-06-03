@@ -1,6 +1,5 @@
 class Api::GroupsController < ApplicationController
     def create
-        debugger
         @group = Group.new(group_params)
         if !@group.photo.attached?
             file = File.open('/public/beatemup_logo.png')

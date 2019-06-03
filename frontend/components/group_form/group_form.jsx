@@ -21,13 +21,20 @@ class GroupForm extends React.Component{
         this.handlePhoto = this.handlePhoto.bind(this)
     }
 
-    switchForm(){
-        this.setState({currentInput: this.state.currentInput + 1})
+    switchForm(e){
+        if(e.type !== 'click'){
+            if(e.key == 'Enter'){
+                this.setState({ currentInput: this.state.currentInput + 1 })
+            }
+        }else{
+            this.setState({currentInput: this.state.currentInput + 1})
+        }
     }
 
     handleSubmit(e){
         e.preventDefault();
         let newGroup = new FormData();
+
         newGroup.append("group[location]", this.state.location)
         newGroup.append("group[name]", this.state.name)
         newGroup.append("group[description]", this.state.description)
@@ -59,14 +66,12 @@ class GroupForm extends React.Component{
         if(this.state.currentInput === 0){
             return(
                 <div className='group-form-container'>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className='group-form-content'>
-                            <label>Where is your group located?
-                                <br/>
-                                <input type="text" value={this.state.location} onChange={this.handleLocation} />
-                            </label>
-                        </div>
-                    </form>
+                    <div className='group-form-content'>
+                        <label>Where is your group located?
+                            <br/>
+                            <input type="text" value={this.state.location} onChange={this.handleLocation} onKeyPress={this.switchForm}/>
+                        </label>
+                    </div>
                     <div onClick={this.switchForm} className='group-form-next'>Next</div>
                 </div>
             );
@@ -74,14 +79,12 @@ class GroupForm extends React.Component{
         if (this.state.currentInput === 1) {
             return (
                 <div className='group-form-container'>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className='group-form-content'>
-                            <label>What is your group interested in
-                                <br/>
-                                <input type="text" value={this.state.category} onChange={this.handleCategory}/>
-                            </label>
-                        </div>
-                    </form>
+                    <div className='group-form-content'>
+                        <label>What is your group interested in
+                            <br/>
+                            <input type="text" value={this.state.category} onChange={this.handleCategory} onKeyPress={this.switchForm}/>
+                        </label>
+                    </div>
                     <div onClick={this.switchForm} className='group-form-next'>Next</div>
                 </div>
             );
@@ -89,14 +92,12 @@ class GroupForm extends React.Component{
         if (this.state.currentInput === 2) {
             return (
                 <div className='group-form-container'>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className='group-form-content'>
-                            <label>What will your group's name be
-                                <br/>
-                                <input type="text" value={this.state.name} onChange={this.handleName} />
-                            </label>
-                        </div>
-                    </form>
+                    <div className='group-form-content'>
+                        <label>What will your group's name be
+                            <br/>
+                            <input type="text" value={this.state.name} onChange={this.handleName} onKeyPress={this.switchForm}/>
+                        </label>
+                    </div>
                     <div onClick={this.switchForm} className='group-form-next'>Next</div>
                 </div>
             );
@@ -104,14 +105,12 @@ class GroupForm extends React.Component{
         if (this.state.currentInput === 3) {
             return (
                 <div className='group-form-container'>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className='group-form-content'>
-                            <label>Give your group a brief description
-                                <br/>
-                                <textarea value={this.state.description} onChange={this.handleDesc} ></textarea>
-                            </label>
-                        </div>
-                    </form>
+                    <div className='group-form-content'>
+                        <label>Give your group a brief description
+                            <br/>
+                            <textarea value={this.state.description} onChange={this.handleDesc} ></textarea>
+                        </label>
+                    </div>
                     <div onClick={this.switchForm} className='group-form-next'>Next</div>
                 </div>
             );
@@ -119,18 +118,16 @@ class GroupForm extends React.Component{
         if (this.state.currentInput === 4) {
             return (
                 <div className='group-form-container'>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className='group-form-content'>
-                            <label>Upload a photo for your event
-                                <input type="file" onChange={this.handlePhoto} />
-                            </label>
-                        </div>
-                    </form>
+                    <div className='group-form-content'>
+                        <label>Upload a photo for your event
+                            <input type="file" onChange={this.handlePhoto} onKeyPress={this.switchForm}/>
+                        </label>
+                    </div>
                     <div onClick={this.switchForm} className='group-form-next'>Next</div>
                 </div>
             );
         }
-        if (this.state.currentInput === 5) {
+        if (this.state.currentInput >= 5) {
             return (
                 <div className='group-form-container'>
                     <form onSubmit={this.handleSubmit}>
