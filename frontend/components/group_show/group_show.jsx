@@ -6,6 +6,7 @@ class GroupShow extends React.Component{
         super(props);
         this.fetched = false;
         this.joinThisGroup = this.joinThisGroup.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
     }
 
     componentDidMount(){
@@ -17,6 +18,10 @@ class GroupShow extends React.Component{
         this.props.joinGroup(this.props.group.id);
     }
 
+    handleDelete(){
+        this.props.deleteGroup(this.props.group.id)
+    }
+
     render(){
         if(this.fetched){
             let organizer = null;
@@ -26,6 +31,8 @@ class GroupShow extends React.Component{
                 }
             })
             let eventButton = null
+            let editButton = null
+            let deleteButton = null
             if (!this.props.currentUser){
                 eventButton = <Link to='/login'><div className='join-group-button'>Join This Group</div></Link>
             }
@@ -39,8 +46,10 @@ class GroupShow extends React.Component{
                         groupId: this.props.group.id
                     }
                 }}><div className='join-group-button'>Create Group Event</div></Link>
+                editButton = <Link to={"/editgroup/" + this.props.group.id}><div id="group-edit-button">Edit Group</div></Link>
+                deleteButton  = <div></div>
             }else{
-                eventButton = <div className='joined-group-button'>Group Joined</div>
+                eventButton = <div id="group-delete-button" onClick={this.handleDelete}>Delete Group</div>
             }
             return(
                 <>

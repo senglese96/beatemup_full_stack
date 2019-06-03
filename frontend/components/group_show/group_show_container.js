@@ -1,4 +1,4 @@
-import { fetchGroup, joinGroup } from '../../actions/group_actions'
+import { fetchGroup, joinGroup, updateGroup, deleteGroup } from '../../actions/group_actions'
 import { groupMembers, groupEvents } from '../../reducers/selectors'
 import {connect} from 'react-redux'
 import GroupShow from './group_show'
@@ -12,7 +12,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     fetchGroup: groupId => dispatch(fetchGroup(groupId)),
-    joinGroup: groupId  => dispatch(joinGroup(groupId))
+    joinGroup: groupId  => dispatch(joinGroup(groupId)),
+    deleteGroup: groupId => dispatch(deleteGroup(groupId))
 })
 
 export default connect(
