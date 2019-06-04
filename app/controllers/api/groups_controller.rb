@@ -1,14 +1,19 @@
 class Api::GroupsController < ApplicationController
     def create
+        if group_params["photo"] == 'null'
+            file = File.open('public/beatemup_logo.png')
+            params[:group][:photo] = file;
+        end
         @group = Group.new(group_params)
         if !@group.photo.attached?
-            file = File.open('/public/beatemup_logo.png')
             @group.photo.attach(io: file, filename: 'beatemup_logo.png')
         end
         if @group.organizer_id == nil
             @group.organizer_id = current_user.id
         end
+        
         if @group.save
+            Membership.create!(member_id: current_user.id, group_id: @group.id)
             redirect_to api_group_url(@group.id)
         else
             render json: @group.errors.full_messages, status: 422
@@ -19,7 +24,7 @@ class Api::GroupsController < ApplicationController
         @group = Group.find_by(id: params[:id])
         @members = @group.members == nil ? [] : @group.members
         @memberships = @group.memberships == nil ? [] : @group.memberships
-        @events = @group.events
+        @events = @group.events == nil ? [] : @group.events
         if @group
             render "api/groups/show"
         else
@@ -28,7 +33,7 @@ class Api::GroupsController < ApplicationController
     end
 
     def update
-        @group = Group.find_by(id: params[:id])
+        @group = Group.find_by(id: params[:id].to_i)
         if @group.update(group_params)
             render 'api/groups/show'
         else

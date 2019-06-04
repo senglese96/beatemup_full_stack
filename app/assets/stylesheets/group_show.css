@@ -59,10 +59,10 @@
     background-color: white;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
-.join-group-button{
+.group-button{
     background-color: #f13a59;
     height: 40px;
     width: 140px;
@@ -77,12 +77,12 @@
     padding: 12px 5px;
 }
 
-.join-group-button:hover, .joined-group-button:hover{
+.group-button:hover, #joined-group-button:hover{
     background-color: red;
     cursor: pointer;
 }
 
-.joined-group-button{
+#joined-group-button{
     background-color: red;
     height: 40px;
     width: 140px;

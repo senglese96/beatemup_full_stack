@@ -21,6 +21,26 @@ class GroupForm extends React.Component{
         this.handlePhoto = this.handlePhoto.bind(this)
     }
 
+    componentDidUpdate(){
+        if (this.props.group && !this.state.hasLoaded) {
+            this.setState({
+                location: this.props.group.location,
+                name: this.props.group.name,
+                description: this.props.group.description,
+                category: this.props.group.category,
+                photoFile: null,
+                id: this.props.group.id,
+                hasLoaded: true
+            })
+        }
+    }
+
+    componentDidMount(){
+        if(this.props.formType === 'edit'){
+            this.props.fetchGroup(this.props.match.params.groupId)
+        }
+    }
+
     switchForm(e){
         if(e.type !== 'click'){
             if(e.key == 'Enter'){
@@ -31,17 +51,24 @@ class GroupForm extends React.Component{
         }
     }
 
-    handleSubmit(e){
+    async handleSubmit(e){
         e.preventDefault();
         let newGroup = new FormData();
-
         newGroup.append("group[location]", this.state.location)
         newGroup.append("group[name]", this.state.name)
         newGroup.append("group[description]", this.state.description)
         newGroup.append("group[category]", this.state.category)
-        newGroup.append("group[photo]", this.state.photoFile)
-        this.props.createGroup(newGroup);
-        this.props.history.push('/')
+        if(!(this.props.formType === 'edit' && this.state.photoFile === null )){
+            newGroup.append("group[photo]", this.state.photoFile)
+        }
+        newGroup.append("group[id]", this.state.id)
+        if(this.props.formType === 'edit'){
+            await this.props.updateGroup(newGroup)
+            this.props.history.push('/groups/' + this.state.id)
+        }else{
+            await this.props.createGroup(newGroup)
+            this.props.history.push('/')
+        }
     }
 
     handleCategory(e){
@@ -108,7 +135,7 @@ class GroupForm extends React.Component{
                     <div className='group-form-content'>
                         <label>Give your group a brief description
                             <br/>
-                            <textarea value={this.state.description} onChange={this.handleDesc} ></textarea>
+                            <textarea value={this.state.description} onChange={this.handleDesc} onKeyPress={this.switchForm}></textarea>
                         </label>
                     </div>
                     <div onClick={this.switchForm} className='group-form-next'>Next</div>

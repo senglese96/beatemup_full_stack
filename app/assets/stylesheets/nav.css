@@ -17,7 +17,7 @@
     font-size: 14px
 }
 
-.nav-bar a:hover{
+.nav-bar a:hover, .logged-nav-buttons a:hover{
     cursor: pointer;
     color: #00a2c7;
 }
@@ -37,6 +37,7 @@
     padding-left: 9px;
     text-decoration: none;
 }
+
 
 .other-nav-button{
     color: #999999;

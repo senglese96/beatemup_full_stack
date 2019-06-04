@@ -20,6 +20,7 @@ class GroupShow extends React.Component{
 
     handleDelete(){
         this.props.deleteGroup(this.props.group.id)
+        this.props.history.push('/')
     }
 
     render(){
@@ -34,10 +35,10 @@ class GroupShow extends React.Component{
             let editButton = null
             let deleteButton = null
             if (!this.props.currentUser){
-                eventButton = <Link to='/login'><div className='join-group-button'>Join This Group</div></Link>
+                eventButton = <Link to='/login'><div id='join-group-button' className="group-button">Join This Group</div></Link>
             }
             else if(!(this.props.users.includes(this.props.currentUser))){
-                eventButton = <div className='join-group-button' onClick={this.joinThisGroup}>Join This Group</div>
+                eventButton = <div id='join-group-button' className="group-button" onClick={this.joinThisGroup}>Join This Group</div>
             }
             else if(this.props.currentUser.id === this.props.group.organizerId){
                 eventButton = <Link to={{
@@ -45,11 +46,11 @@ class GroupShow extends React.Component{
                     state: {
                         groupId: this.props.group.id
                     }
-                }}><div className='join-group-button'>Create Group Event</div></Link>
-                editButton = <Link to={"/editgroup/" + this.props.group.id}><div id="group-edit-button">Edit Group</div></Link>
-                deleteButton  = <div></div>
+                }}><div id='join-group-button' className="group-button">Create Group Event</div></Link>
+                editButton = <Link to={"/editgroup/" + this.props.group.id}><div id="group-edit-button" className="group-button">Edit Group</div></Link>
+                deleteButton  = <div id="delete-group-button" className="group-button" onClick={this.handleDelete}>Delete Group</div>
             }else{
-                eventButton = <div id="group-delete-button" onClick={this.handleDelete}>Delete Group</div>
+                eventButton = <div id="joined-group-button">Joined</div>
             }
             return(
                 <>
@@ -67,6 +68,8 @@ class GroupShow extends React.Component{
                     </div>
                     <div className='group-show-navigation'>
                         {eventButton}
+                        {editButton}
+                        {deleteButton}
                     </div>
                     <div className='group-show-details'>
                         <div className='group-show-desc'>

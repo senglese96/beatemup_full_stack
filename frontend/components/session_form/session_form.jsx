@@ -56,7 +56,12 @@ class SessionForm extends React.Component {
         }, 1000);
         setTimeout(() => {
             this.setState({username: 'NoHablo96', password: 'GreenGoddess'})
-            this.handleSubmit();
+            const user = Object.assign({}, this.state);
+            this.props.processForm(user);
+            this.setState({
+                username: '',
+                password: ''
+            });
         }, 2500)
     }
 
