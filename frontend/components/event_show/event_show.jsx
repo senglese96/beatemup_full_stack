@@ -20,8 +20,15 @@ class EventShow extends React.Component{
     render(){
         if(this.isFetched){
             let goingButton = null
+            let deleteButton = null
+            let editButton = null
+            let buttonLabel = <h1>Are you going?</h1>
             if (!this.props.currentUser) {
                 goingButton = <Link to='/login'><div className='event-show-going-button'>I am going</div></Link>
+            }else if(this.props.host.id === this.props.currentUser.id){
+                deleteButton = <div onClick={this.handleDelete} class="event-button">Delete Event</div>
+                editButton = <Link to={'/editevent/' + this.props.event.id}><div class="event-button"></div></Link>
+                buttonLabel = <h1>This is your event</h1>
             }
             else if(this.props.users.includes(this.props.currentUser)){
                 goingButton = <div className='event-show-already-going'>Going</div>
@@ -43,7 +50,7 @@ class EventShow extends React.Component{
                                 </ul>
                             </div>
                             <div className='event-show-buttons'>
-                                <h1>Are you going?</h1>
+                                {buttonLabel}
                                 <p>{this.props.event.attendeeIds.length} people going</p>
                                 {goingButton}
                             </div>

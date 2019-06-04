@@ -21,6 +21,27 @@ class EventForm extends React.Component{
         this.handleTitle = this.handleTitle.bind(this)
     }
 
+    componentDidUpdate() {
+        if (this.props.event && !this.state.hasLoaded) {
+            this.setState({
+                category: this.props.event.category,
+                date: this.props.event.date,
+                title: this.props.event.title,
+                eventAddress: this.props.event.address,
+                details: this.props.event.details,
+                groupId: this.props.event.groupId,
+                id: this.props.event.id,
+                hasLoaded: true
+            })
+        }
+    }
+
+    componentDidMount() {
+        if (this.props.formType === 'edit') {
+            this.props.fetchEvent(this.props.match.params.eventId)
+        }
+    }
+
     switchForm(e) {
         if (e.type !== 'click') {
             if (e.key == 'Enter') {
@@ -33,7 +54,12 @@ class EventForm extends React.Component{
 
     handleSubmit(e) {
         e.preventDefault();
-        const { groupId } = this.props.location.state
+        let groupId
+        if(this.props.formType === 'edit'){
+            groupId = this.state.groupId
+        }else{
+            groupId = this.props.location.state[groupId]
+        }
         let newEvent = {
             category: this.state.category,
             title: this.state.title,
