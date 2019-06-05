@@ -35,7 +35,7 @@ class Api::GroupsController < ApplicationController
     def update
         @group = Group.find_by(id: params[:id].to_i)
         if @group.update(group_params)
-            render 'api/groups/show'
+            redirect_to api_group_url(@group.id)
         else
             render json: 'Group Not Found', status: 404
         end

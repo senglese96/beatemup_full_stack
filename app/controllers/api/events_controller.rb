@@ -14,8 +14,8 @@ class Api::EventsController < ApplicationController
 
     def show
         @event = Event.find_by(id: params[:id])
-        @attendances = @event.attendances;
-        @users = @event.attendees
+        @attendances = @event.attendances == nil ? [] : @event.attendances 
+        @users = @event.attendees == nil ? [] : @event.attendees 
         @group = @event.group
         @host = @event.host
         if @event
@@ -33,7 +33,11 @@ class Api::EventsController < ApplicationController
     def update
         @event = Event.find_by(id: params[:id])
         if @event.update(event_params)
-            render 'api/events/show'
+            @attendances = @event.attendances == nil ? [] : @event.attendances 
+            @users = @event.attendees == nil ? [] : @event.attendees 
+            @group = @event.group
+            @host = @event.host
+            render "api/events/show"
         else
             render json: 'Event Not Found', status: 404
         end

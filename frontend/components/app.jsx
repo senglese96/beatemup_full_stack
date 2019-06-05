@@ -10,7 +10,8 @@ import NewGroupContainer from './group_form/new_group_container'
 import EditGroupContainer from './group_form/edit_group_container'
 import GroupShowContainer from './group_show/group_show_container'
 import EventShowContainer from './event_show/event_show_container'
-import NewEventForm from './event_form/new_event_container'
+import NewEventContainer from './event_form/new_event_container'
+import EditEventContainer from './event_form/edit_event_container'
 
 const App = () => (
     <> 
@@ -22,8 +23,9 @@ const App = () => (
         <AuthRoute path='/login' component={LoginFormContainer}/>
         <AuthRoute path='/signup' component={SignupFormContainer}/>
         <ProtectedRoute path='/newgroup' component={NewGroupContainer}/>
-        <ProtectedRoute path='/newevent' component={NewEventForm}/>
+        <ProtectedRoute path='/newevent' component={NewEventContainer}/>
         <ProtectedRoute path='/editgroup/:groupId' component={EditGroupContainer}/>
+        <ProtectedRoute path='/editevent/:eventId' component={EditEventContainer}/>
         <Route path='/groups/:groupId' component={GroupShowContainer}/>
         <Route path='/events/:eventId' component={EventShowContainer}/>
     </>

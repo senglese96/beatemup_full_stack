@@ -68,7 +68,7 @@
     color: #999999;
 }
 
-.event-show-going-button{
+.event-button{
     margin-top: 30px;
     width: 150px;
     height: 40px;
@@ -77,12 +77,12 @@
     border-radius: 5px;
     color: white;
     font-weight: 600;
-    padding: 10px 0;
+    padding: 12px 0;
     text-align: center;
     box-sizing: border-box;
 }
 
-.event-show-going-button:hover{
+.event-button:hover{
     background-color: #008dae;
     cursor: pointer;
 }

@@ -27,7 +27,7 @@ class EventForm extends React.Component{
                 category: this.props.event.category,
                 date: this.props.event.date,
                 title: this.props.event.title,
-                eventAddress: this.props.event.address,
+                eventAddress: this.props.event.eventAddress,
                 details: this.props.event.details,
                 groupId: this.props.event.groupId,
                 id: this.props.event.id,
@@ -52,7 +52,7 @@ class EventForm extends React.Component{
         }
     }
 
-    handleSubmit(e) {
+    async handleSubmit(e) {
         e.preventDefault();
         let groupId
         if(this.props.formType === 'edit'){
@@ -66,10 +66,16 @@ class EventForm extends React.Component{
             details: this.state.details,
             date: this.state.date,
             eventAddress: this.state.eventAddress,
+            id: this.state.id,
             groupId: groupId
         };
-        this.props.createEvent(newEvent);
-        this.props.history.push('/')
+        if(this.props.formType === 'edit'){
+            await this.props.updateEvent(newEvent)
+            this.props.history.push('/events/' + this.state.id)
+        } else {
+            await this.props.createEvent(newEvent);
+            this.props.history.push('/')
+        }
     }
 
     handleCategory(e) {
@@ -143,7 +149,7 @@ class EventForm extends React.Component{
                 <div className='event-form-container'>
                     <form onSubmit={this.handleSubmit}>
                         <div className='event-form-content'>
-                            <label>What game will be played
+                            <label>What kind of event is it?
                                 <br />
                                 <input type="text" value={this.state.category} onChange={this.handleCategory} onKeyPress={this.switchForm}/>
                             </label>
@@ -169,13 +175,17 @@ class EventForm extends React.Component{
             );
         }
         if (this.state.currentInput === 5) {
+            let submitText = "Create Event";
+            if(this.props.formType === 'edit'){
+                submitText = "Commit Changes"
+            }
             return (
                 <div className='event-form-container'>
                     <form onSubmit={this.handleSubmit}>
                         <div className='event-form-content'>
-                            <label>Finish off creating your event
+                            <label>Finish up
                                 <br />
-                                <input type="submit" value="Create Event" />
+                                <input type="submit" value={submitText} />
                             </label>
                         </div>
                     </form>

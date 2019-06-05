@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import EventShow from './event_show';
-import { fetchEvent, attendEvent } from '../../actions/event_actions'
+import { fetchEvent, attendEvent, deleteEvent} from '../../actions/event_actions'
 import { fetchGroup } from '../../actions/group_actions'
 import { eventAttendees, eventGroup, getHost } from '../../reducers/selectors'
 
@@ -16,6 +16,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = dispatch => ({
     fetchEvent: eventId  => dispatch(fetchEvent(eventId)),
     fetchGroup: groupId => dispatch(fetchGroup(groupId)),
+    deleteEvent: eventId  => dispatch(deleteEvent(eventId)),
     attendEvent: eventId => dispatch(attendEvent(eventId))
 })
 

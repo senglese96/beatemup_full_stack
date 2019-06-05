@@ -8,6 +8,11 @@ class EventShow extends React.Component{
         this.attendThisEvent = this.attendThisEvent.bind(this)
     }
 
+    handleDelete(){
+        this.props.deleteEvent();
+        this.props.history.push('/');
+    }
+
     componentDidMount(){
         this.props.fetchEvent(this.props.match.params.eventId);
         this.isFetched = true;
@@ -24,16 +29,16 @@ class EventShow extends React.Component{
             let editButton = null
             let buttonLabel = <h1>Are you going?</h1>
             if (!this.props.currentUser) {
-                goingButton = <Link to='/login'><div className='event-show-going-button'>I am going</div></Link>
+                goingButton = <Link to='/login'><div id='event-show-going-button' className="event-button">I am going</div></Link>
             }else if(this.props.host.id === this.props.currentUser.id){
-                deleteButton = <div onClick={this.handleDelete} class="event-button">Delete Event</div>
-                editButton = <Link to={'/editevent/' + this.props.event.id}><div class="event-button"></div></Link>
+                deleteButton = <div onClick={this.handleDelete} className="event-button">Delete Event</div>
+                editButton = <Link to={'/editevent/' + this.props.event.id}><div className="event-button">Edit Event</div></Link>
                 buttonLabel = <h1>This is your event</h1>
             }
             else if(this.props.users.includes(this.props.currentUser)){
                 goingButton = <div className='event-show-already-going'>Going</div>
             }else{
-                goingButton = <div className='event-show-going-button' onClick={this.attendThisEvent}>I am going</div>
+                goingButton = <div id='event-show-going-button' className="event-button" onClick={this.attendThisEvent}>I am going</div>
             }
             return(
                 <>
@@ -53,6 +58,8 @@ class EventShow extends React.Component{
                                 {buttonLabel}
                                 <p>{this.props.event.attendeeIds.length} people going</p>
                                 {goingButton}
+                                {deleteButton}
+                                {editButton}
                             </div>
                         </div>
                         <div className='event-show-details'>

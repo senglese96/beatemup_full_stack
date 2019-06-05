@@ -155,13 +155,17 @@ class GroupForm extends React.Component{
             );
         }
         if (this.state.currentInput >= 5) {
+            let submitText = "Finish creating group"
+            if(this.state.formType === 'edit'){
+                submitText = 'Finish Editing'
+            }
             return (
                 <div className='group-form-container'>
                     <form onSubmit={this.handleSubmit}>
                         <div className='group-form-content'>
-                            <label>Finish off creating your group
+                            <label>Finish up
                                 <br />
-                                <input type="submit" value="Create Group" />
+                                <input type="submit" value={submitText} />
                             </label>
                         </div>
                     </form>
