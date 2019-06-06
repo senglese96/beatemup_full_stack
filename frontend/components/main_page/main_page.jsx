@@ -9,7 +9,10 @@ class MainPage extends React.Component{
             backgroundImg: <div className='slide-fade' id='one'></div>,  
             eIndex: 0,
             gIndex: 0,
-            mainSwitch: 'groups'    
+            mainSwitch: 'groups',
+            currentGroups: this.props.groups,
+            currentEvents: this.props.events,
+            searchTerm: ''    
         }
         this.slideshowAnimation = this.slideshowAnimation.bind(this)
         this.animations = [
@@ -20,6 +23,7 @@ class MainPage extends React.Component{
             <div className='slide-fade' id='five'></div>
         ];
         this.switchPage = this.switchPage.bind(this)
+        this.handleSearch = this.handleSearch.bind(this)
     }
 
     handleClick(e){
@@ -34,6 +38,14 @@ class MainPage extends React.Component{
         this.props.fetchGroups();
     }
 
+    componentDidUpdate(){
+        if (!this.state.fetched && this.props.groups.length > 0  && this.props.events.length > 0) {
+            this.setState({ currentGroups: this.props.groups })
+            this.setState({ currentEvents: this.props.events })
+            this.setState({ fetched: true })
+        }
+    }
+
     slideshowAnimation(){
         let that = this
         setInterval(() => {
@@ -44,7 +56,25 @@ class MainPage extends React.Component{
     }
 
     handleSearch(e){
-
+        let newTerm = e.currentTarget.value
+        this.setState({searchTerm: newTerm})
+        if(this.state.mainSwitch === 'groups'){
+            const newGroups = []
+            this.props.groups.forEach(group => {
+                if(group.name.toLowerCase().includes(newTerm.toLowerCase())){
+                    newGroups.push(group)
+                }
+            })
+            this.setState({currentGroups: newGroups})
+        } else{
+            const newEvents = [];
+            this.props.events.forEach(event => {
+                if (event.title.toLowerCase().includes(newTerm.toLowerCase())) {
+                    newEvents.push(event)
+                }
+            })
+            this.setState({currentEvents: newEvents})
+        }
     }
 
     switchPage(){
@@ -114,7 +144,7 @@ class MainPage extends React.Component{
                 currIndex = <div className='logged-index'>
                 <h3>Suggested Groups</h3>
                     <div className="logged-group-index">
-                        {this.props.groups.map(group => {
+                        {this.state.currentGroups.map(group => {
                             return (<Link to={'/groups/' + group.id}>
                                 <div className="logged-group-item">
                                     <h3>{group.name}</h3>
@@ -132,7 +162,7 @@ class MainPage extends React.Component{
                     <h3>Upcoming Events</h3>
                     <div className='logged-event-index'>
 
-                        {this.props.events.map(event => {
+                        {this.state.currentEvents.map(event => {
                             if(eventDate === undefined || eventDate < new Date(event.date)){
                                 eventDate = new Date(event.date)
                                 return(
@@ -164,7 +194,7 @@ class MainPage extends React.Component{
                     </div>
                     <div className='logged-group-container'>
                         <div className='logged-search-bar'>
-                            <input type="text" />
+                            <input type="text" value={this.state.searchTerm} onChange={this.handleSearch}/>
                             <div className='page-selector'>
                                 {groupButton}
                                 {calendarButton}
