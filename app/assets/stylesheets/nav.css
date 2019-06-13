@@ -38,6 +38,21 @@
     text-decoration: none;
 }
 
+.logged-nav-buttons button{
+    background-color: #f13a59;
+    border-radius: 4px;
+    border-style: none;
+    margin: 0 10px;
+    width: 60px;
+    height: 25px;
+    color: white;
+    font-weight: 600;
+}
+
+.logged-nav-buttons button:hover{
+    cursor: pointer;
+    background-color: red;
+}
 
 .other-nav-button{
     color: #999999;
@@ -49,10 +64,7 @@
 }
 
 .other-nav-button:hover{
-    text-decoration: underline;
+    text-decoration: none;
     color: #1f24cc;
 }
 
-#new-group-button:hover{
-    text-decoration: underline;
-}

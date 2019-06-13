@@ -18,7 +18,7 @@ class Api::EventsController < ApplicationController
         @users = @event.attendees == nil ? [] : @event.attendees 
         @group = @event.group
         @host = @event.host
-        if @event
+        if @eddvent
             render "api/events/show"
         else
             render json: 'No Event Here', status: 404

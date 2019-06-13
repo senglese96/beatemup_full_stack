@@ -146,7 +146,8 @@ class MainPage extends React.Component{
                     <div className="logged-group-index">
                         {this.state.currentGroups.map(group => {
                             return (<Link to={'/groups/' + group.id}>
-                                <div className="logged-group-item">
+                                <div className="logged-group-item" style={{backgroundImage: `url(${group.photoUrl})`}}>
+                                    {/* <img src={group.photoUrl} id="logged-group-image"/> */}
                                     <h3>{group.name}</h3>
                                 </div>
                             </Link>

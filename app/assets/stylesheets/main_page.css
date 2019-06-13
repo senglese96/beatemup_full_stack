@@ -251,18 +251,27 @@
     height: 170px;
     margin: 10px 0;
     border: 1px solid #BBBBBB;
-    padding: 10px;
     border-radius: 3px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
 }
 
 .logged-group-item h3{
     margin-top: 70px;
     font-weight: 600;
     font-size: 26px;
+    color: white;
+    text-shadow: 0px 0px 2px #0f1721;
 }
 
 .logged-group-item:hover{
     cursor: pointer;
+}
+
+#logged-group-image{
+    height: inherit;
+    margin: 0 auto;
 }
 
 a{
