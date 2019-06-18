@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
+require 'faker'
 
 User.destroy_all
 m = User.create!(username: 'Mang0', password: 'thatsthemango')
@@ -31,11 +32,19 @@ s2j = User.create!(username: 'S2J', password: 'Johnnybgood')
 brolylegs = User.create!(username: 'Brolylegs', password: 'themastahmouth')
 jb = User.create!(username: 'JB', password: 'evidencezip')
 mrwizard =User.create!(username: 'MrWizard', password: 'meleeisdead')
+oracle = User.create!(username: 'Oracle', password: 'ScrubThatDish')
+
+user_ids = []
+
+50.times do 
+    new_user = User.create!(username: Faker::Name.unique.name, password: Faker::Games::SuperSmashBros.fighter)
+    user_ids << new_user.id
+end
 
 Group.destroy_all
 file = open("https://s3-us-west-1.amazonaws.com/beat-em-up-seeds/beatemup_logo.png")
 hk = Group.create!(category: 'Smash Ultimate', name: 'Help Katie', location: 'fremont', 
-description: "The ohlone smash ultimate club. Who's Katie", organizer_id: d.id)
+description: "The ohlone smash ultimate club. Who's Katie?", organizer_id: d.id)
 hk.photo.attach(io: file, filename: 'beatemup_logo.png')
 
 file = open("https://s3-us-west-1.amazonaws.com/beat-em-up-seeds/punk.jpeg")
@@ -44,7 +53,7 @@ description: 'The best damn team in the street fighter league', organizer_id: p.
 inferno.photo.attach(io: file, filename: 'punk.jpeg')
 
 file = open("https://s3-us-west-1.amazonaws.com/beat-em-up-seeds/VGBootCamp_logo.jpg")
-vgbc = Group.create!(category: 'Street Ultimate', name: 'VG Bootcamp', location: 'Maryland', 
+vgbc = Group.create!(category: 'Smash Ultimate', name: 'VG Bootcamp', location: 'Maryland', 
 description: 'The most prominent  streamer of all super smash brothers games. We host tournaments, and make many videos
 on new tech that gets discovered in smash', organizer_id: gimr.id)
 vgbc.photo.attach(io: file, filename: 'vgbc_logo.jpg')
@@ -73,6 +82,12 @@ file = open("https://s3-us-west-1.amazonaws.com/beat-em-up-seeds/fighterz.jpg")
 fighterz = Group.create!(category: 'Dragon Ball FighterZ', name: 'Bardock Boys', location: 'Japan', 
 description: 'Bardock is the friggin best and this group is here to prove it.', organizer_id: g.id)
 fighterz.photo.attach(io: file, filename: "fighterz.jpg")
+
+file = open('https://s3-us-west-1.amazonaws.com/beat-em-up-seeds/tourneylocator.jpeg')
+tourneylocator = Group.create!(category: 'Smash Melee', name: 'Tourney Locator', location: 'Texas', 
+description: 'Founded on a love of esports and competition, Tourney Locator began as an attempt to unite the DFW Smash community under one roof. With that accomplished, we are aiming to further the growth of the esports community on a local and national scale, one step at a time.', 
+organizer_id: oracle.id)
+tourneylocator.photo.attach(io: file, filename: "tourneylocator.jpg")
 
 Event.destroy_all
 
