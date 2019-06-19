@@ -33,11 +33,13 @@ brolylegs = User.create!(username: 'Brolylegs', password: 'themastahmouth')
 jb = User.create!(username: 'JB', password: 'evidencezip')
 mrwizard =User.create!(username: 'MrWizard', password: 'meleeisdead')
 oracle = User.create!(username: 'Oracle', password: 'ScrubThatDish')
+citiofbrass = User.create!(username: 'CitiofBrass', password: 'kingofthenorth')
+jz = User.create!(username: 'Justin Xavier', password: 'spototea')
 
 user_ids = []
 
 50.times do 
-    new_user = User.create!(username: Faker::Name.unique.name, password: Faker::Games::SuperSmashBros.fighter)
+    new_user = User.create!(username: Faker::Name.unique.name, password: Faker::Lorem.characters(10))
     user_ids << new_user.id
 end
 
@@ -88,6 +90,18 @@ tourneylocator = Group.create!(category: 'Smash Melee', name: 'Tourney Locator',
 description: 'Founded on a love of esports and competition, Tourney Locator began as an attempt to unite the DFW Smash community under one roof. With that accomplished, we are aiming to further the growth of the esports community on a local and national scale, one step at a time.', 
 organizer_id: oracle.id)
 tourneylocator.photo.attach(io: file, filename: "tourneylocator.jpg")
+
+file = open('https://beat-em-up-seeds.s3-us-west-1.amazonaws.com/dtnlogo.png')
+dtn = Group.create!(category: 'All', name: 'Defend The North', location: 'New York', 
+description: "Defend the North is dedicated to creating awareness and appreciation for video games, it’s communities and related mediums primarily through the presentation of conventions and events that celebrate the historic and ongoing contribution of video games and it’s culture.", 
+organizer_id: citiofbrass.id)
+dtn.photo.attach(io: file, filename: "dtn.jpg")
+
+file = open('https://beat-em-up-seeds.s3-us-west-1.amazonaws.com/electronic-dojo.jpg')
+edojo = Group.create!(category: 'All', name: 'Electronic Dojo', location: 'United Kingdom', 
+description: "As the UKs longest running fighting games community, Electronic Dojo is the team behind the European Major Tournament VSFighting. We've supported hundreds of events from tradeshows, product launches and promos to international events, all to support our competitive little scene!", 
+organizer_id: jz.id)
+edojo.photo.attach(io: file, filename: "edojo.jpg")
 
 Event.destroy_all
 
@@ -188,6 +202,51 @@ details: 'The man, the myth, the mango returns with his own tournament series. B
 date: Date.new(2019, 6, 28),
 group_id: norwalk.id)
 
+defend = Event.create!(title: 'Defend the North 2019', 
+event_address: 'New York City', 
+category: 'Tournament',
+host_id: citiofbrass.id,
+details: "On July 19-21, the New Yorker Hotel hosts Defend the North: New York City's only Major Fighting Game Tournament! Widely considered to be one of the biggest travel destinations in the world, NYC is also home to a diverse gaming community with a rich and storied legacy. Don't miss out on the savings with pre-registration as it ends on July 12th. This summer, be a part of that legacy and register today!
+
+Stay updated on all DTN2019 info such as tournament brackets, scheduling, announcements, streams and more by signing up for our newsletter!
+
+Why Go to Defend the North?
+- 20+ Tournaments for Current and Retro Games
+
+- 30+ Different Games Available for Casual Play
+
+- Arcade Room featuring Japanese Candy Cabs
+
+- 24-hour Gaming in BYOC and Arcade Rooms
+
+- 3 Days and Nights of Gaming for One Price
+
+- Retro Events Crowdfunded via Matcherino
+
+- Community-Run Side Tournaments
+
+- Cosplay Contest with Cash Prizes
+
+- Vendor and Exhibitor Booths
+
+- Free Prizes and Giveaways
+
+- And much more!",
+date: Date.new(2019, 7, 19),
+group_id: dtn.id)
+
+vsfight = Event.create!(title: 'VSFighting 2019', 
+event_address: 'Birmingham', 
+category: 'Tournament',
+host_id: jz.id,
+details: "Europe's premier annual fighting games tournament is back for year 9! VSFighting is Electronic Dojo's flagship event; an open tournament hosting a range of fighting games with competitors travelling from all over the world! We have some exciting announcements on the way which we can't discuss just yet but...
+
+Tekken 7 (Tekken World Tour MASTER Event) Street Fighter V: Arcade Edition (Capcom Pro Tour PREMIER Event) Mortal Kombat 11 (Interkontinental Kup event) Dead or Alive 6 (Dead or Alive World Championship Event) SoulCalibur VI DragonBall FighterZ Samurai Shodown Super Street Fighter II Turbo (as always!)
+
+This year, we're powered by Astro who will support with audio mixers at every tournament setup, along with Zowie who will be supporting with lagless monitors! Bring your own headset or rent one for free at the event.",
+date: Date.new(2019, 7, 20),
+group_id: edojo.id)
+
 
 Membership.destroy_all
 Membership.create!(member_id: d.id, group_id: hk.id)
@@ -215,6 +274,15 @@ Membership.create!(member_id: lucky.id, group_id: norwalk.id)
 Membership.create!(member_id: s2j.id, group_id: norwalk.id)
 Membership.create!(member_id: gimr.id, group_id: vgbc.id)
 Membership.create!(member_id: mrwizard.id, group_id: evo.id)
+Membership.create!(member_id: citiofbrass.id, group_id: dtn.id)
+10.times do
+    Membership.create(member_id: user_ids.sample, group_id: dtn.id)
+end
+Membership.create!(member_id: jz.id, group_id: edojo.id)
+7.times do
+    Membership.create!(member_id: user_ids.sample, group_id: edojo.id)
+end
+
 
 Attendance.destroy_all
 Attendance.create!(attendee_id: p.id, event_id: evo_t.id)
@@ -291,3 +359,9 @@ Attendance.create!(attendee_id: lffn.id, event_id: summit.id)
 Attendance.create!(attendee_id: g.id, event_id: summit.id)
 Attendance.create!(attendee_id: sonic.id, event_id: summit.id)
 Attendance.create!(attendee_id: semj.id, event_id: summit.id)
+23.times do
+    Attendance.create!(attendee_id: user_ids.sample, event_id: defend.id)
+end
+30.times do
+    Attendance.create!(attendee_id: user_ids.sample, event_id: vsfight.id)
+end
