@@ -35,6 +35,7 @@ mrwizard =User.create!(username: 'MrWizard', password: 'meleeisdead')
 oracle = User.create!(username: 'Oracle', password: 'ScrubThatDish')
 citiofbrass = User.create!(username: 'CitiofBrass', password: 'kingofthenorth')
 jz = User.create!(username: 'Justin Xavier', password: 'spototea')
+cb = User.create!(username: 'Christian Bishop', password: 'bigbucks')
 
 user_ids = []
 
@@ -102,6 +103,12 @@ edojo = Group.create!(category: 'All', name: 'Electronic Dojo', location: 'Unite
 description: "As the UKs longest running fighting games community, Electronic Dojo is the team behind the European Major Tournament VSFighting. We've supported hundreds of events from tradeshows, product launches and promos to international events, all to support our competitive little scene!", 
 organizer_id: jz.id)
 edojo.photo.attach(io: file, filename: "edojo.jpg")
+
+file = open('https://beat-em-up-seeds.s3-us-west-1.amazonaws.com/thunder.jpg')
+thunder = Group.create(category: 'Smash Ultimate', name: 'Thunder Gaming', location: 'Los Angeles', 
+description: "The biggest up and coming socal esports organization, with huge events in Smash brothers and more!", 
+organizer_id: cb.id)
+
 
 Event.destroy_all
 
@@ -247,6 +254,23 @@ This year, we're powered by Astro who will support with audio mixers at every to
 date: Date.new(2019, 7, 20),
 group_id: edojo.id)
 
+tsmash = Event.create!(title: 'Thunder Smash 2', 
+event_address: 'Los Angeles', 
+category: 'Tournament',
+host_id: cb.id,
+details: 'Thunder Gaming presents the second Thunder Smash event: The SoCal Arcadian featuring a $5,000 prize pool
+
+Think you're SoCal's Hidden Boss? Come prove it at The SoCal Arcadian! Anyone who is not on SoCal PR and resides in the region is qualified for entry.
+
+Play in the SoCal Arcadian and watch the pros play in the invitational. Announcing pro players each day!
+
+WHEN
+July 28th, 2019
+
+WHERE
+Thunder Studios 20434 S. Santa Fe Ave. Long Beach, CA 90810',
+date: Date.new(2019, 7, 28),
+group_id: thunder.id)
 
 Membership.destroy_all
 Membership.create!(member_id: d.id, group_id: hk.id)
@@ -282,7 +306,9 @@ Membership.create!(member_id: jz.id, group_id: edojo.id)
 7.times do
     Membership.create!(member_id: user_ids.sample, group_id: edojo.id)
 end
-
+5.times do
+    Membership.create!(member_id: user_ids.sample, group_id: thunder.id)
+end
 
 Attendance.destroy_all
 Attendance.create!(attendee_id: p.id, event_id: evo_t.id)
@@ -364,4 +390,7 @@ Attendance.create!(attendee_id: semj.id, event_id: summit.id)
 end
 30.times do
     Attendance.create!(attendee_id: user_ids.sample, event_id: vsfight.id)
+end
+21.times do
+    Attendance.create!(attendee_id: user_ids.sample, event_id: tsmash.id)
 end
